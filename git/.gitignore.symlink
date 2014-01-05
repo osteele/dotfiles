@@ -1,0 +1,12 @@
+# global ignore; used for all repos as per .gitconfig
+
+.\#*
+*.orig
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+.tags
+.tags_sorted_by_file
+*.sqlite3-journal
+.envrc
+.gems

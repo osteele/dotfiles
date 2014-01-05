@@ -1,0 +1,29 @@
+export PATH="/usr/local/bin:$PATH"
+
+# Path to the bash it configuration
+export BASH_IT="/Users/osteele/.bash_it"
+
+# Lock and Load a custom theme file
+export BASH_IT_THEME="bobby"
+
+# Load Bash It
+source $BASH_IT/bash_it.sh
+
+# {{{
+# Node Completion - Auto-generated, do not touch.
+shopt -s progcomp
+for f in $(command ls ~/.node-completion); do
+  f="$HOME/.node-completion/$f"
+  test -f "$f" && . "$f"
+done
+# }}}
+
+# pro cd function
+pd() {
+  local projDir=$(pro search $1)
+  cd ${projDir}
+}
+
+# __loopback-oracle-installer__:  Tue Dec 10 07:54:18 EST 2013
+export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:/usr/local/lib/node_modules/loopback-connector-oracle/node_modules/instantclient"
+

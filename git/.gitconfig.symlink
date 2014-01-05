@@ -1,0 +1,125 @@
+[user]
+	name = Oliver Steele
+	email = steele@osteele.com
+
+[github]
+	user = osteele
+
+[alias]
+	ci = commit -a
+	co = checkout
+	st = status
+	find-commits = log --oneline -F --grep
+	changes = diff --name-status -r
+	amend = commit -a -C HEAD --amend
+	rev = checkout HEAD
+	p4-ci = !git-p4 rebase ; git-p4 submit --reset
+    # from nuclear squid
+	l = log --decorate --graph --pretty=tformat:'%C(yellow)%h%Cred%d %Cblue[%an]%Creset %s %Cgreen(%cr)%Creset%N'
+	# l = log --graph --pretty=tformat:'%h %d %an %s' --abbrev-commit
+	lg = log --graph --pretty=format:'%Cred%h%Creset %an -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	ignored = ls-files --exclude-standard --ignored --others
+	# from http://www.saintsjd.com/2012/01/a-better-ui-for-git/
+	stage = add -u
+	undo = reset --hard HEAD^
+	switch = !legit switch \"$@\"
+
+[branch]
+	autosetuprebase = always
+
+[core]
+	excludesfile = /Users/osteele/.gitignore
+	attributesfile = /Users/osteele/.gitattributes
+	quotepath = false
+
+[diff]
+	color = auto
+	rename = copy
+	renames = true
+	tool = Kaleidoscope
+
+[merge]
+	log = true
+	tool = Kaleidoscope
+	conflictstyle = diff3
+	# tool = opendiff
+
+[pager]
+	color = true
+
+[color]
+	ui = auto
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[color "diff"]
+	meta = blue reverse
+	frag = magenta bold
+	old = red bold
+	new = blue bold
+
+[color "status"]
+	added = red
+	changed = green
+	untracked = blue
+
+[help]
+	format = web
+	browser = open
+	htmlpath = /usr/local/Cellar/git/1.8.4/share/doc/git-doc
+
+[mergetool]
+	keepBackup = false
+	prompt = false
+
+# [mergetool "kdiff3"]
+# 	path = /opt/local/bin/kdiff3
+# [mergetool "filemerge"]
+# 	path = /Developer/Applications/Utilities/FileMerge.app/Contents/MacOS/FileMerge
+# [difftool "sourcetree"]
+# 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+# 	path =
+[mergetool "sourcetree"]
+	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+[alias]
+    ribbon = tag --force _ribbon origin/master
+    catchup = log --pretty=oneline --abbrev-commit --decorate --reverse --topo-order _ribbon..origin/master
+	branches = !legit branches
+	sprout = !legit sprout \"$@\"
+	unpublish = !legit unpublish \"$@\"
+	harvest = !legit harvest \"$@\"
+	sync = !legit sync \"$@\"
+	publish = !legit publish \"$@\"
+	graft = !legit graft \"$@\"
+
+[push]
+	default = tracking
+[format]
+  pretty = %Cblue%h%Creset %Cgreen[%ar]%Creset (%an) %s
+[difftool "diffmerge"]
+	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
+[mergetool "diffmerge"]
+	cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
+	trustExitCode = true
+[credential]
+	helper = osxkeychain
+[difftool "sourcetree"]
+	cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
+	path = 
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+[init]
+	templatedir = ~/.gittemplate

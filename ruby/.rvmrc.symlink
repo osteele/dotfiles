@@ -1,0 +1,6 @@
+# Install rubies when used if are not installed.
+export rvm_install_on_use_flag=1
+
+# Automatically trust project .rvmrc files
+export rvm_trust_rvmrcs_flag=1
+export rvm_always_trust_rvmrc_flag

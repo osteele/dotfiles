@@ -1,0 +1,109 @@
+# `.zshrc' is sourced in interactive shells. It should contain commands to set up aliases, functions, options, key bindings, etc.
+
+ZSH=$HOME/lib/oh-my-zsh
+ZSH_THEME=miloshadzic
+COMPLETION_WAITING_DOTS=true
+# DISABLE_AUTO_UPDATE=true
+DISABLE_UPDATE_PROMPT=true
+
+plugins=(brew bower coffee command-not-found dircycle encode64 gem git git-extras git-flow git-hubflow)
+plugins+=(history-substring-search last-working-dir lein node npm osx per-directory-history pip rails ruby)
+plugins+=(urltools zsh-syntax-highlighting zsh-history-substring-search)
+# slows the prompt: plugins+=(github)
+
+source $ZSH/oh-my-zsh.sh
+
+export EDITOR='subl -w'
+
+autoload -U select-word-style
+select-word-style bash
+
+# insert_sudo() { zle beginning-of-line; zle -U "sudo " }
+# zle -N insert-sudo insert_sudo
+
+AUTO_CD=true
+CDABLE_VARS=true
+
+unsetopt share_history
+setopt HIST_IGNORE_DUPS
+HIST_FIND_NO_DUPS=true
+HIST_IGNORE_DUPS=true
+
+
+#
+# Directories
+#
+alias -g dl=~/Downloads
+alias -g dt=~/Desktop
+alias -g code=~/code
+alias -g src=~/src
+
+
+#
+## Filters
+#
+alias -g G='|grep'
+alias -g L='|less'
+alias -g H='|head'
+alias -g T='|tail'
+alias -g S='|sort'
+alias -g WL='|wc -l'
+alias -g X0='|xargs -0'
+alias -g X='|xargs'
+
+
+#
+# File handlers
+#
+alias -s txt=open
+alias -s rtf=open
+alias -s pdf=open
+alias -s html=open
+alias -s rb=ruby
+alias -s js=subl
+
+
+#
+# Aliases
+#
+autoload -U zmv
+alias mmv='noglob zmv -W'
+alias e=subl
+alias e.='subl .'
+# source: https://github.com/barryclark/bashstrap
+alias c='pygmentize -O style=monokai -f console256 -g'
+
+# ls
+alias l='ls'
+alias la='ls -a'
+alias ld='ls -d'
+alias lda='ls -ad'
+
+# git
+alias gs='git status'
+alias ga='git add .'
+alias gc='git commit -m' # requires you to type a commit message
+alias gp='git push'
+
+
+#
+# Shell Extensions
+#
+
+source $ZSH/plugins/zsh-notify/notify.plugin.zsh
+NOTIFY_COMMAND_COMPLETE_TIMEOUT=10
+
+# alias > ~/.alias.cache
+# function last_command() {
+#   echo `history -1 | cut -d ' ' -f 3-20 | realiaser`
+# }
+
+# alias fixopenwith='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user'
+
+eval "$(fasd --init auto)"
+
+# pro cd function
+pd() {
+  local projDir=$(pro search $1)
+  cd ${projDir}
+}

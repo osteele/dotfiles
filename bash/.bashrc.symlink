@@ -1,0 +1,10 @@
+export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+# pro cd function
+pd() {
+  local projDir=$(pro search $1)
+  cd ${projDir}
+}
+
+# added by travis gem
+[ -f /Users/osteele/.travis/travis.sh ] && source /Users/osteele/.travis/travis.sh

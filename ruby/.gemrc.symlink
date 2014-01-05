@@ -1,0 +1,5 @@
+# gem: --no-rdoc --no-ri
+# rdoc: --inline-source --template sdoc
+
+install: --no-document
+update: --no-document
