@@ -1,0 +1,41 @@
+update
+upgrade
+
+tap phinze/homebrew-cask
+install brew-cask
+
+install apple-gcc42
+install cairo
+install curl-ca-bundle
+install direnv
+install fasd
+install git
+install go
+install graphviz
+install haskell-platform
+install heroku-toolbelt
+install imagemagick
+install nginx
+install node
+install nvm
+install openssl
+install postgresql
+install pow
+install python
+install rbenv
+install rbenv-bundler
+install rbenv-gem-rehash
+install rbenv-gemset
+install readline
+install reattach-to-user-namespace
+install redis
+install rlwrap
+install ruby-build
+install sqlite
+install ssh-copy-id
+install the_silver_searcher
+install tmux
+install varnish
+
+cleanup
+doctor
