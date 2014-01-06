@@ -74,3 +74,5 @@ brew bundle "$(dirname $0)/../config"
 while read -r package; do
   brew cask install $package
 done < <(sed 's/#.*//g' "$(dirname $0)/../config/Casks" | grep .)
+
+brew cask alfred link
