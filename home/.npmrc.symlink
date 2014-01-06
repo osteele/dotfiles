@@ -1,0 +1,11 @@
+color = true
+# description = true
+init.author.name = Oliver Steele
+init.author.email = steele@osteele.com
+init.author.url = http://osteele.com/
+cache-lock-stale = 259200000
+loglevel = error
+link = true
+viewer = browser
+email = steele@osteele.com
+registry = http://registry.npmjs.org/
