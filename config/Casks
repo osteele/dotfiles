@@ -1,6 +1,17 @@
 anvil
 ccmenu
+github
 vagrant
+
+# QuickLook
+betterzipql
+qlcolorcode
+qlimagesize
+qlmarkdown
+qlprettypatch
+qlstephen
+quicklook-csv
+quicklook-json
 
 # Currently downloaded outside cask (free):
 # anki
