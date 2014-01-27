@@ -6,6 +6,19 @@ COMPLETION_WAITING_DOTS=true
 # DISABLE_AUTO_UPDATE=true
 DISABLE_UPDATE_PROMPT=true
 
+# adapted from http://bit.ly/1hmVRy5
+read_symlink_target_dirname () {
+  local source=$1
+  local dir
+  while [ -h "$source" ]; do
+    dir="$(cd -P "$(dirname "$source")" && pwd)"
+    source="$(readlink "$source")"
+    [[ $source != /* ]] && source="$dir/$source"
+  done
+  echo "$(cd -P "$(dirname "$source")" && pwd)"
+}
+PATH=$(read_symlink_target_dirname ~/.zshrc)/../bin:$PATH
+
 plugins=(brew bower coffee command-not-found dircycle encode64 gem git git-extras git-flow git-hubflow)
 plugins+=(history-substring-search last-working-dir lein node npm osx per-directory-history pip rails ruby)
 plugins+=(urltools zsh-syntax-highlighting zsh-history-substring-search)
@@ -69,7 +82,9 @@ alias -s js=subl
 autoload -U zmv
 alias mmv='noglob zmv -W'
 alias e=subl
-alias e.='subl .'
+alias o=open
+alias e.='subl-dir .'
+alias o.='open .'
 # source: https://github.com/barryclark/bashstrap
 alias c='pygmentize -O style=monokai -f console256 -g'
 
