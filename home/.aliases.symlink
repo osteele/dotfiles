@@ -39,5 +39,17 @@ alias sd.web='(cd ~/sites/softdes.web && jekyll serve)'
 alias htl.web='(cd ~/sites/htl.org && jekyll serve)'
 alias ad.web='(cd ~/code/assignment-dashboard && docker-compose up)'
 
-# function project { cd ~/code/"$1" }
-# function site { cd ~/site/"$1" }
+function py {
+  if [[ -z $1 || $1 == list ]]; then
+    conda env list
+  elif [[ $1 == system ]]; then
+    source deactivate
+  elif [[ $1 == create ]]; then
+    echo conda create --name "${@:2}"
+    # source activate "$1"
+  elif [[ $1 == delete ]]; then
+    conda remove --name "${@:2}".0 --all
+  else
+    source activate "$1"
+  fi
+}

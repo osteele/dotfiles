@@ -2,30 +2,35 @@
 # It should contain commands to set the command search path, plus other important environment variables.
 # `.zshenv' should not contain commands that produce output or assume the shell is attached to a tty.
 
-export PATH=/usr/local/sbin:$PATH
-export PATH=/usr/local/bin:$PATH # already in PATH, but shadowed by /usr/bin
-export PATH=/usr/local/share/npm/bin:$PATH
-export PATH=~/.cabal/bin:$PATH
-export PATH=~/bin:$PATH
-export PATH=./node_modules/.bin:$PATH
-export PATH=.gems/bin:$PATH
-export PATH=./bin:$PATH
-
-if hash brew 2>/dev/null && hash go 2>/dev/null; then
-  export GOPATH=$(brew --prefix)/Cellar/go/site/$(go version | egrep -wo 'go(\d|\.)+' | cut -c3-)
-  export PATH=$GOPATH/bin:$PATH
-fi
-
-# For use with `brew install curl-ca-bundle`
-export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
-
-if [[ -f ~/.env.secret ]]; then
-  source ~/.env.secret
-fi
+[[ -f ~/.travis/travis.sh ]] && source ~/.travis/travis.sh
 
 # Environment managers.
 hash rbenv 2>/dev/null && eval "$(rbenv init -)"
 hash brew 2>/dev/null && [[ -f $(brew --prefix nvm)/nvm.sh ]] && source $(brew --prefix nvm)/nvm.sh
 hash direnv 2>/dev/null && eval "$(direnv hook zsh)"
 
-[[ -f ~/.travis/travis.sh ]] && source ~/.travis/travis.sh
+PATH=~/anaconda3/bin:$PATH # conda
+PATH=/usr/local/opt/ccache/libexec:$PATH # ccache
+PATH=/usr/local/opt/go/libexec/bin:$PATH # Go
+PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
+PATH=/usr/local/share/npm/bin:$PATH
+PATH=./node_modules/.bin:$PATH # npm
+PATH=~/.cabal/bin:$PATH
+hash yarn 2> /dev/null && PATH=$(yarn global bin):$PATH # yarn
+PATH=$HOME/.rbenv/bin:$PATH # rbenv
+PATH=.gems/bin:$PATH
+PATH=~/bin:$PATH
+
+MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
+MANPATH=/usr/local/share/man:$MANPATH
+
+if hash brew 2>/dev/null && hash go 2>/dev/null; then
+  export GOPATH=$(brew --prefix)/Cellar/go/site/$(go version | egrep -wo 'go(\d|\.)+' | cut -c3-)
+fi
+
+# For use with `brew install curl-ca-bundle`
+export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
+
+if [[ -f ~/.secrets ]]; then
+  source ~/.secrets
+fi
