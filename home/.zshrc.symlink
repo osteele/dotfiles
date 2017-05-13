@@ -1,3 +1,7 @@
+# Paths
+# TODO who is adding prepending PATH between .zshenv and here?
+PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
+
 export EDITOR='subl -w'
 [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]] && source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 
@@ -70,11 +74,7 @@ alias -s js=subl
 #
 autoload -U zmv
 alias mmv='noglob zmv -W'
-alias e=subl
-alias o=open
-alias e.='subl-dir .'
-alias o.='open .'
-# source: https://github.com/barryclark/bashstrap
-alias c='pygmentize -O style=monokai -f console256 -g'
+
 fpath=(~/.zsh-completions $fpath)
-eval $(thefuck --alias)
+
+source ~/.aliases

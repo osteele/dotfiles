@@ -9,10 +9,10 @@ hash rbenv 2>/dev/null && eval "$(rbenv init -)"
 hash brew 2>/dev/null && [[ -f $(brew --prefix nvm)/nvm.sh ]] && source $(brew --prefix nvm)/nvm.sh
 hash direnv 2>/dev/null && eval "$(direnv hook zsh)"
 
-PATH=~/anaconda3/bin:$PATH # conda
+export PATH=~/anaconda3/bin:$PATH # conda
 PATH=/usr/local/opt/ccache/libexec:$PATH # ccache
 PATH=/usr/local/opt/go/libexec/bin:$PATH # Go
-PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
+# PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
 PATH=/usr/local/share/npm/bin:$PATH
 PATH=./node_modules/.bin:$PATH # npm
 PATH=~/.cabal/bin:$PATH
@@ -29,7 +29,7 @@ if hash brew 2>/dev/null && hash go 2>/dev/null; then
 fi
 
 # For use with `brew install curl-ca-bundle`
-export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
+# export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 
 if [[ -f ~/.secrets ]]; then
   source ~/.secrets

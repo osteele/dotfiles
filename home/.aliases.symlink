@@ -1,6 +1,19 @@
 alias g=git
 hash hub 2> /dev/null && alias git=hub
 alias less='less -m -N -g -i -J --line-numbers --underline-special'
+alias paths='printenv PATH | tr : "\n"'
+
+alias e='$EDITOR'
+alias o=open
+alias e.='$EDITOR .'
+alias o.='open .'
+# source: https://github.com/barryclark/bashstrap
+alias c='pygmentize -O style=monokai -f console256 -g'
+
+hash thefuck 2>/dev/null && eval $(thefuck --alias)
+alias crap=fuck
+alias doh=fuck
+alias please=fuck
 
 alias jn='jupyter notebook'
 
@@ -12,8 +25,6 @@ alias jn='jupyter notebook'
 # alias sf='fasd -sif'     # interactive file selection
 # alias z='fasd_cd -d'     # cd, same functionality as j in autojump
 # alias zz='fasd_cd -d -i' # cd with interactive selection
-
-#alias cask 'brew cask'
 
 alias dc=docker-compose
 alias dm=docker-machine
