@@ -2,6 +2,11 @@
 # It should contain commands to set the command search path, plus other important environment variables.
 # `.zshenv' should not contain commands that produce output or assume the shell is attached to a tty.
 
+PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
+if [[ -L ~/.zshenv ]]; then
+  DOTFILES=$(dirname $(readlink -nf ~/.zshenv))/..
+fi
+
 [[ -f ~/.travis/travis.sh ]] && source ~/.travis/travis.sh
 
 # Environment managers.
@@ -12,13 +17,13 @@ hash direnv 2>/dev/null && eval "$(direnv hook zsh)"
 export PATH=~/anaconda3/bin:$PATH # conda
 PATH=/usr/local/opt/ccache/libexec:$PATH # ccache
 PATH=/usr/local/opt/go/libexec/bin:$PATH # Go
-# PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
 PATH=/usr/local/share/npm/bin:$PATH
 PATH=./node_modules/.bin:$PATH # npm
 PATH=~/.cabal/bin:$PATH
 hash yarn 2> /dev/null && PATH=$(yarn global bin):$PATH # yarn
 PATH=$HOME/.rbenv/bin:$PATH # rbenv
 PATH=.gems/bin:$PATH
+[[ -v DOTFILES ]] && PATH=$DOTFILES/bin:$PATH
 PATH=~/bin:$PATH
 
 MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
