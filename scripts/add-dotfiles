@@ -9,14 +9,14 @@ srcdir_rel="./$(relpath $srcdir $targetdir)"
 
 cd $targetdir
 
-while read -r -d '' linkfile; do
-  basename="$(basename "$linkfile")"
-  targetpath="${basename%.*}"
-  if [[ ! -f "$targetpath" ]]; then
-    echo "$targetpath is not a regular file"
+while read -r -d '' repo_file; do
+  basename="$(basename "$repo_file")"
+  dotfile="${basename%.*}"
+  if [[ ! -f "$dotfile" ]]; then
+    echo "$dotfile is not a regular file"
   fi
-  if [[ -f "$targetpath" && ! -L "$targetpath" ]]; then
-    cp "$targetpath" "$linkfile"
-    ln -sf "$linkfile" "$targetpath"
+  if [[ -f "$dotfile" && ! -L "$dotfile" ]]; then
+    cp "$dotfile" "$repo_file"
+    ln -sf "$repo_file" "$dotfile"
   fi
 done < <(find "$srcdir_rel" -name \*.symlink -print0)

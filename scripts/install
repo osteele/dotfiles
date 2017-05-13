@@ -9,8 +9,8 @@ srcdir_rel="./$(relpath $srcdir $targetdir)"
 
 cd $targetdir
 
-while read -r -d '' file; do
-  basename="$(basename "$file")"
-  targetpath="${basename%.*}"
-  ln -sf "$file" "$targetpath"
+while read -r -d '' link_target; do
+  basename="$(basename "$link_target")"
+  dotfile="${basename%.*}"
+  ln -sf "$link_target" "$dotfile"
 done < <(find "$srcdir_rel" -name \*.symlink -print0)

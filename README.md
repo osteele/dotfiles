@@ -31,7 +31,7 @@ by a link to it.
 
 ```shell
 cd dotfiles
-./scripts/ingest
+./scripts/add-dotfiles
 git commit -a 'Update dotfiles'
 ```
 
@@ -40,7 +40,7 @@ git commit -a 'Update dotfiles'
 ```shell
 cd dotfiles
 touch home/.rcfile.symlink
-./scripts/ingest
+./scripts/add-dotfiles
 git commit -a 'Update dotfiles'
 ```
 
@@ -63,12 +63,12 @@ that don't have casks such as Microsoft Office.
 
 ```shell
 cd dotfiles
-./scripts/caskables
+./scripts/cask-candidates
 ```
 
 ### List dotfiles that aren't symlinked to dotfiles/home
 
 ```shell
 cd dotfiles
-./scripts/audit
+./scripts/dotfile-candidates
 ```

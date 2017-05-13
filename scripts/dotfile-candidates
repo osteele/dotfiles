@@ -10,21 +10,19 @@ srcdir_rel="./$(relpath $srcdir $targetdir)"
 cd $targetdir
 
 for dotfile in .*; do
-  # echo $dotfile
-  # basename="$(basename "$linkfile")"
-  # targetpath="${basename%.*}"
   if [[ "$dotfile" == '.' || "$dotfile" == '..' ]]; then
     true  # ignore
   elif [[ -d "$dotfile" ]]; then
-    true  # ignore directory files
+    true  # ignore directories
   elif [[ ! -f "$dotfile" ]]; then
     echo "$dotfile is not a regular file"
   elif [[ -L "$dotfile" ]]; then
-    linktarget="$srcdir_rel/${dotfile}.symlink"
-    if [[ $(readlink "$dotfile") != "$linktarget" ]]; then
-      echo "$dotfile is a symbolic link to $(readlink $dotfile)"
-      echo "actual  : $(readlink "$dotfile")"
-      echo "expected: $linktarget"
+    link_target=$(readlink -n "$dotfile")
+    repo_file="$srcdir_rel/${dotfile}.symlink"
+    if [[ "$link_target" != "$repo_file" ]]; then
+      echo "$dotfile is a symbolic link to $link_target"
+      echo "actual  : $link_target"
+      echo "expected: $repo_file"
     fi
   else
     echo "other $dotfile"
