@@ -49,6 +49,13 @@ cd dotfiles
 (cd config && brew bundle cleanup)
 ```
 
+### List casks that aren't in the Brewfile and could be
+
+```shell
+cd dotfiles
+./scripts/caskables
+```
+
 ### List dotfiles that aren't symlinked to dotfiles/home
 
 ```shell
