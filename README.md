@@ -12,18 +12,22 @@ brew bundle
 
 ## Update machine from repo
 
-### Install over existing dotfiles
+This installs over existing dotfiles
 
 ```shell
 cd dotfiles
+./scripts/install
 brew bundle
 brew bundle cleanup --force
-./scripts/install
 ```
 
 ## Update repo from machine
 
-### Ingest existing dotfiles
+### Add unlinked dotfiles
+
+For each dotfile in HOME that has a .symlink but is not a
+link to that .symlink, update the .symlink and replace the HOME file
+by a link to it.
 
 ```shell
 cd dotfiles
@@ -49,7 +53,13 @@ cd dotfiles
 brew bundle cleanup
 ```
 
-### List casks that aren't in the Brewfile and could be
+### List casks that aren't in the Brewfile
+
+List apps that weren't installed from a cask or from the Mac App Store.
+These are candidates for moving to `Brewfile`.
+
+This script doesn't know about built-in apps such as Mail, or other apps
+that don't have casks such as Microsoft Office.
 
 ```shell
 cd dotfiles
