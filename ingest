@@ -11,7 +11,7 @@ cd $targetdir
 
 while read -r -d '' linkfile; do
   basename="$(basename "$linkfile")"
-  targetpath="$HOME/${basename%.*}"
+  targetpath="${basename%.*}"
   if [[ ! -f "$targetpath" ]]; then
     echo "$targetpath is not a regular file"
   fi

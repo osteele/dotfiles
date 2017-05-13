@@ -27,3 +27,10 @@ git commit -a 'Update dotfiles'
 ```
 
 This also ingests and commits any other previously non-symlinked files.
+
+## List dotfiles that aren't symlinked to dotfiles/home
+
+```shell
+cd dotfiles
+./audit
+```

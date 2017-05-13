@@ -1,0 +1,32 @@
+#!/bin/bash -eu
+
+relpath(){ python -c "import os.path; print(os.path.relpath('$1','${2:-$PWD}'))"; }
+# -- http://stackoverflow.com/questions/2564634/bash-convert-absolute-path-into-relative-path-given-a-current-directory
+
+srcdir="$(dirname $0)"/home
+targetdir=~
+srcdir_rel="./$(relpath $srcdir $targetdir)"
+
+cd $targetdir
+
+for dotfile in .*; do
+  # echo $dotfile
+  # basename="$(basename "$linkfile")"
+  # targetpath="${basename%.*}"
+  if [[ "$dotfile" == '.' || "$dotfile" == '..' ]]; then
+    true  # ignore
+  elif [[ -d "$dotfile" ]]; then
+    true  # ignore directory files
+  elif [[ ! -f "$dotfile" ]]; then
+    echo "$dotfile is not a regular file"
+  elif [[ -L "$dotfile" ]]; then
+    linktarget="$srcdir_rel/${dotfile}.symlink"
+    if [[ $(readlink "$dotfile") != "$linktarget" ]]; then
+      echo "$dotfile is a symbolic link to $(readlink $dotfile)"
+      echo "actual  : $(readlink "$dotfile")"
+      echo "expected: $linktarget"
+    fi
+  else
+    echo "other $dotfile"
+  fi
+done < <(find "$srcdir_rel" -name \*.symlink -print0)
