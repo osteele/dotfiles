@@ -2,6 +2,9 @@
 
 # `defaults write` section adapted from https://github.com/skwp/dotfiles:
 
+# Menu bar: show battery percentage
+defaults write com.apple.menuextra.battery ShowPercent -string "YES"
+
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 
@@ -63,16 +66,5 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 chflags nohidden ~/Library
 
 # Kill affected applications
-# for app in Finder Dock Safari SystemUIServer; do killall "$app" > /dev/null 2>&1; done
-# echo "OSX Hacks Done. Note that some of these changes require a logout/restart to take effect."
-
-hash brew 2>/dev/null || ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
-
-brew bundle "$(dirname $0)/../config"
-
-# Install native apps
-while read -r package; do
-  brew cask install $package
-done < <(sed 's/#.*//g' "$(dirname $0)/../config/Casks" | grep .)
-
-brew cask alfred link
+for app in Finder Dock Safari SystemUIServer; do killall "$app" > /dev/null 2>&1; done
+echo "OSX Hacks Done. Note that some of these changes require a logout/restart to take effect."

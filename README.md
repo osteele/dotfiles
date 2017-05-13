@@ -8,6 +8,7 @@ My dotfiles, _a la_ <http://dotfiles.github.io>.
 cd dotfiles
 brew bundle
 ./scripts/install
+bash ./macos/install.sh
 ```
 
 ## Update machine from repo
