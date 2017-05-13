@@ -75,6 +75,9 @@ alias -s js=subl
 autoload -U zmv
 alias mmv='noglob zmv -W'
 
-fpath=(~/.zsh-completions $fpath)
+[[ -v DOTFILES ]] && . $DOTFILES/shell/aliases
 
-source ~/.aliases
+#
+# Completions
+#
+fpath=(~/.zsh-completions $fpath)
