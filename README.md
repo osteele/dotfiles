@@ -6,7 +6,7 @@ My dotfiles, _a la_ <http://dotfiles.github.io>.
 
 ```shell
 cd dotfiles
-(cd config && brew bundle)
+brew bundle
 ./scripts/install
 ```
 
@@ -16,8 +16,8 @@ cd dotfiles
 
 ```shell
 cd dotfiles
-(cd config && brew bundle)
-(cd config && brew bundle cleanup --force)
+brew bundle
+brew bundle cleanup --force
 ./scripts/install
 ```
 
@@ -46,7 +46,7 @@ This also ingests and commits any other previously non-symlinked files.
 
 ```shell
 cd dotfiles
-(cd config && brew bundle cleanup)
+brew bundle cleanup
 ```
 
 ### List casks that aren't in the Brewfile and could be
