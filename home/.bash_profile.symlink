@@ -1,13 +1,4 @@
-export PATH="/usr/local/bin:$PATH"
-
-# Path to the bash it configuration
-export BASH_IT="/Users/osteele/.bash_it"
-
-# Lock and Load a custom theme file
-export BASH_IT_THEME="bobby"
-
-# Load Bash It
-source $BASH_IT/bash_it.sh
+source ~/.bashrc
 
 # {{{
 # Node Completion - Auto-generated, do not touch.
@@ -25,5 +16,11 @@ pd() {
 }
 
 # __loopback-oracle-installer__:  Tue Dec 10 07:54:18 EST 2013
-export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:/usr/local/lib/node_modules/loopback-connector-oracle/node_modules/instantclient"
+# export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:/usr/local/lib/node_modules/loopback-connector-oracle/node_modules/instantclient"
 
+
+# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+# added by Anaconda 2.0.1 installer
+# export PATH="/Users/osteele/anaconda/bin:$PATH"
+#if [ -e /Users/osteele/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/osteele/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

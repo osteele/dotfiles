@@ -1,0 +1,43 @@
+alias g=git
+hash hub 2> /dev/null && alias git=hub
+alias less='less -m -N -g -i -J --line-numbers --underline-special'
+
+alias jn='jupyter notebook'
+
+# alias a='fasd -a'        # any
+# alias s='fasd -si'       # show / search / select
+# alias d='fasd -d'        # directory
+# alias f='fasd -f'        # file
+# alias sd='fasd -sid'     # interactive directory selection
+# alias sf='fasd -sif'     # interactive file selection
+# alias z='fasd_cd -d'     # cd, same functionality as j in autojump
+# alias zz='fasd_cd -d -i' # cd with interactive selection
+
+#alias cask 'brew cask'
+
+alias dc=docker-compose
+alias dm=docker-machine
+
+function dc.bash {
+  docker-compose exec $1 bash
+}
+
+function dm.a {
+  if [ -z $1 ]; then
+    local machine=$(docker-machine active 2>/dev/null)
+    echo "Active host is ${machine:-local}"
+  elif [[ $1 == local ]]; then
+    eval "$(docker-machine env -u)"
+    echo "Set active host to local"
+  else
+    eval "$(docker-machine env $1)"
+    echo "Set active host to $1"
+  fi
+}
+
+alias sd.web='(cd ~/sites/softdes.web && jekyll serve)'
+alias htl.web='(cd ~/sites/htl.org && jekyll serve)'
+alias ad.web='(cd ~/code/assignment-dashboard && docker-compose up)'
+
+# function project { cd ~/code/"$1" }
+# function site { cd ~/site/"$1" }
