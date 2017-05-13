@@ -1,15 +1,29 @@
 # Oliver's Dotfiles
 
-My dotfiles, a la <http://dotfiles.github.io>.
+My dotfiles, _a la_ <http://dotfiles.github.io>.
 
-## Install over existing dotfiles
+## Provision a new machine
 
 ```shell
 cd dotfiles
+(cd config && brew bundle)
 ./scripts/install
 ```
 
-## Ingest existing dotfiles
+## Update machine from repo
+
+### Install over existing dotfiles
+
+```shell
+cd dotfiles
+(cd config && brew bundle)
+(cd config && brew bundle cleanup --force)
+./scripts/install
+```
+
+## Update repo from machine
+
+### Ingest existing dotfiles
 
 ```shell
 cd dotfiles
@@ -17,7 +31,7 @@ cd dotfiles
 git commit -a 'Update dotfiles'
 ```
 
-## Add a file
+### Add a dotfile
 
 ```shell
 cd dotfiles
@@ -28,7 +42,14 @@ git commit -a 'Update dotfiles'
 
 This also ingests and commits any other previously non-symlinked files.
 
-## List dotfiles that aren't symlinked to dotfiles/home
+### List brews that aren't in the repo
+
+```shell
+cd dotfiles
+(cd config && brew bundle cleanup)
+```
+
+### List dotfiles that aren't symlinked to dotfiles/home
 
 ```shell
 cd dotfiles

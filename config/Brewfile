@@ -1,42 +1,67 @@
-update
-upgrade
+tap 'caskroom/cask'
+tap 'homebrew/bundle'
+tap 'homebrew/core'
+tap 'homebrew/services'
 
-tap phinze/homebrew-cask
-install brew-cask
+cask 'osxfuse'
 
-install apple-gcc42
-install cairo
-install curl-ca-bundle
-install direnv
-install fasd
-install git
-install go
-install graphviz
-install haskell-platform
-install heroku-toolbelt
-install imagemagick
-install nginx
-install node
-install nvm
-install openssl
-install postgresql
-install pow
-install python
-install rbenv
-install rbenv-bundler
-install rbenv-gem-rehash
-install rbenv-gemset
-install readline
-install reattach-to-user-namespace
-install redis
-install rlwrap
-install ruby-build
-install sqlite
-install ssh-copy-id
-install the_silver_searcher
-install terminal-notifier
-install tmux
-install varnish
+brew 'bash'
+brew 'coreutils'
+brew 'direnv'
+brew 'docker'
+brew 'fasd'
+brew 'ffmpeg'
+brew 'git'
+brew 'go'
+brew 'graphviz'
+brew 'heroku'
+brew 'highlight'
+brew 'httpie'
+brew 'hub'
+brew 'hunspell'
+brew 'imagemagick'
+brew 'jq'
+brew 'lame'
+brew 'libyaml'
+brew 'mongodb', restart_service: true
+brew 'mr'
+brew 'node'
+brew 'oniguruma'
+brew 'openssl'
+brew 'pv'
+brew 'rbenv'
+brew 'readline'
+brew 'ripgrep'
+brew 'rlwrap'
+brew 'ruby'
+brew 'ruby-build'
+brew 'sqlite'
+brew 'ssh-copy-id'
+brew 'terminal-notifier'
+brew 'thefuck'
+brew 'tldr'
+brew 'tree'
+brew 'watchman'
+brew 'yarn'
+brew 'zsh'
 
-cleanup
-doctor
+# trial
+brew 'git-extras'
+brew 'git-standup'
+brew 'gitfs'
+brew 'rbenv-bundler'
+brew 'rbenv-gemset'
+brew 'reattach-to-user-namespace'
+brew 'tmux'
+
+cask 'ccmenu'
+cask 'cheatsheet'
+cask 'gitbox'
+cask 'githubpulse'
+cask 'gitify'
+cask 'gitscout'
+cask 'gitter'
+cask 'keycastr'
+cask 'ksdiff'
+cask 'nteract'
+cask 'robomongo'
