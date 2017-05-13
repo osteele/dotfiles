@@ -6,14 +6,14 @@ My dotfiles, a la <http://dotfiles.github.io>.
 
 ```shell
 cd dotfiles
-./install
+./scripts/install
 ```
 
 ## Ingest existing dotfiles
 
 ```shell
 cd dotfiles
-./ingest
+./scripts/ingest
 git commit -a 'Update dotfiles'
 ```
 
@@ -22,7 +22,7 @@ git commit -a 'Update dotfiles'
 ```shell
 cd dotfiles
 touch home/.rcfile.symlink
-./ingest
+./scripts/ingest
 git commit -a 'Update dotfiles'
 ```
 
@@ -32,5 +32,5 @@ This also ingests and commits any other previously non-symlinked files.
 
 ```shell
 cd dotfiles
-./audit
+./scripts/audit
 ```
