@@ -1,0 +1,2 @@
+.npmrc.symlink filter=secrets
+.gitconfig.symlink filter=secrets
