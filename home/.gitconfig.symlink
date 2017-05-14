@@ -15,7 +15,7 @@
 	amend = commit -a -C HEAD --amend
 	rev = checkout HEAD
 	p4-ci = !git-p4 rebase ; git-p4 submit --reset
-    # from nuclear squid
+	# from nuclear squid
 	l = log --decorate --graph --pretty=tformat:'%C(yellow)%h%Cred%d %Cblue[%an]%Creset %s %Cgreen(%cr)%Creset%N'
 	# l = log --graph --pretty=tformat:'%h %d %an %s' --abbrev-commit
 	lg = log --graph --pretty=format:'%Cred%h%Creset %an -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
@@ -93,8 +93,8 @@
 	trustExitCode = true
 
 [alias]
-    ribbon = tag --force _ribbon origin/master
-    catchup = log --pretty=oneline --abbrev-commit --decorate --reverse --topo-order _ribbon..origin/master
+	ribbon = tag --force _ribbon origin/master
+	catchup = log --pretty=oneline --abbrev-commit --decorate --reverse --topo-order _ribbon..origin/master
 	branches = !legit branches
 	sprout = !legit sprout \"$@\"
 	unpublish = !legit unpublish \"$@\"
@@ -107,7 +107,7 @@
 	default = tracking
 
 [format]
-  pretty = %Cblue%h%Creset %Cgreen[%ar]%Creset (%an) %s
+	pretty = %Cblue%h%Creset %Cgreen[%ar]%Creset (%an) %s
 
 [difftool "diffmerge"]
 	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
