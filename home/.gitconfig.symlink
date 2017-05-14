@@ -24,9 +24,24 @@
 	stage = add -u
 	undo = reset --hard HEAD^
 	switch = !legit switch \"$@\"
+	ribbon = tag --force _ribbon origin/master
+	catchup = log --pretty=oneline --abbrev-commit --decorate --reverse --topo-order _ribbon..origin/master
+	branches = !legit branches
+	sprout = !legit sprout \"$@\"
+	unpublish = !legit unpublish \"$@\"
+	harvest = !legit harvest \"$@\"
+	sync = !legit sync \"$@\"
+	publish = !legit publish \"$@\"
+	graft = !legit graft \"$@\"
 
 [branch]
 	autosetuprebase = always
+
+[commit]
+	# gpgsign = true
+
+[credential]
+	helper = osxkeychain
 
 [core]
 	excludesfile = /Users/osteele/.gitignore
@@ -36,12 +51,29 @@
 	editor = code --wait
 	whitespace = trailing-space,space-before-tab,indent-with-non-tab
 
+[format]
+	pretty = %Cblue%h%Creset %Cgreen[%ar]%Creset (%an) %s
+
 [diff]
 	color = auto
 	rename = copy
 	renames = true
 	tool = Kaleidoscope
 	compactionHeuristic = true
+
+[gpg]
+	# program = /usr/local/bin/gpg
+
+[help]
+	format = web
+	browser = open
+	autocorrect = 1
+
+[interactive]
+	diffFilter = diff-highlight
+
+[push]
+	default = tracking
 
 [merge]
 	log = true
@@ -54,6 +86,25 @@
 	# log = diff-highlight | less
 	# show = diff-highlight | less
 	# diff = diff-highlight | less
+
+[pull]
+	rebase = preserve
+
+[sequence]
+	editor = rebase-editor
+
+[branch "*branch-name*"]
+	rebase = true
+
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
 
 [color]
 	ui = auto
@@ -73,15 +124,29 @@
 	old = red bold
 	new = blue bold
 
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+
 [color "status"]
 	added = red
 	changed = green
 	untracked = blue
 
-[help]
-	format = web
-	browser = open
-	autocorrect = 1
+[difftool]
+	prompt = false
+
+[difftool "diffmerge"]
+	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
+
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
 
 [mergetool]
 	keepBackup = false
@@ -91,77 +156,10 @@
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 
-[alias]
-	ribbon = tag --force _ribbon origin/master
-	catchup = log --pretty=oneline --abbrev-commit --decorate --reverse --topo-order _ribbon..origin/master
-	branches = !legit branches
-	sprout = !legit sprout \"$@\"
-	unpublish = !legit unpublish \"$@\"
-	harvest = !legit harvest \"$@\"
-	sync = !legit sync \"$@\"
-	publish = !legit publish \"$@\"
-	graft = !legit graft \"$@\"
-
-[push]
-	default = tracking
-
-[format]
-	pretty = %Cblue%h%Creset %Cgreen[%ar]%Creset (%an) %s
-
-[difftool "diffmerge"]
-	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
-
-[difftool]
-	prompt = false
-
 [mergetool "diffmerge"]
 	cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
 	trustExitCode = true
 
-[credential]
-	helper = osxkeychain
-
-[difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-
 [mergetool "Kaleidoscope"]
 	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustExitCode = true
-
-[pull]
-	rebase = preserve
-
-[filter "media"]
-	required = true
-	clean = git media clean %f
-	smudge = git media smudge %f
-
-[filter "lfs"]
-	clean = git lfs clean %f
-	smudge = git lfs smudge %f
-	required = true
-
-[branch "*branch-name*"]
-	rebase = true
-
-[interactive]
-	diffFilter = diff-highlight
-
-[commit]
-	# gpgsign = true
-
-[gpg]
-	# program = /usr/local/bin/gpg
-
-[color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
-
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
-
-[sequence]
-	editor = rebase-editor
