@@ -2,25 +2,26 @@
 
 My dotfiles, _a la_ <http://dotfiles.github.io>.
 
+All shell commands below are intended to be run in the dotfiles directory.
+
 ## Provision a new machine
 
 ```shell
-cd dotfiles
 brew bundle
 ./scripts/install
 bash ./macos/install.sh
 pip install -r requirements.txt
-npm install -g 
+npm install -g
 ```
 
 ## Update machine from repo
 
-Run this after `git pull`, to update a machine that has already been provisioned. (This isn't necessary if the only changes were to already-linked dotfiles.)
+Run this after `git pull`, to update a machine that has already been provisioned.
+(This isn't necessary if the only changes were to already-linked dotfiles.)
 
 Warning: This overwrites over existing dotfiles without warning or confirmation.
 
 ```shell
-cd dotfiles
 ./scripts/install
 brew bundle
 brew bundle cleanup --force
@@ -35,7 +36,6 @@ link to that symlink target, update the dotfiles symlink target, and replace the
 by a link to it.
 
 ```shell
-cd dotfiles
 ./scripts/add-dotfiles
 git commit -a 'Update dotfiles'
 ```
@@ -43,7 +43,6 @@ git commit -a 'Update dotfiles'
 ### Add a dotfile
 
 ```shell
-cd dotfiles
 touch home/.rcfile.symlink
 ./scripts/add-dotfiles
 git commit -a 'Update dotfiles'
@@ -54,7 +53,6 @@ This also ingests and commits any other previously non-symlinked files.
 ### List brews that aren't in the repo
 
 ```shell
-cd dotfiles
 brew bundle cleanup
 ```
 
@@ -67,14 +65,12 @@ This script doesn't know about built-in apps such as Mail, or other apps
 that don't have casks such as Microsoft Office.
 
 ```shell
-cd dotfiles
 ./scripts/cask-candidates
 ```
 
 ### List dotfiles that aren't symlinked to dotfiles/home
 
 ```shell
-cd dotfiles
 ./scripts/dotfile-candidates
 ```
 
