@@ -1,0 +1,15 @@
+{
+  "name": "os-dotfiles",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/osteele/dotfiles.git",
+  "author": "Oliver Steele <steele@osteele.com>",
+  "license": "MIT",
+  "requirements": {},
+  "dependencies": {
+    "diff-so-fancy": "~0.11",
+    "eslint": "~3.19",
+    "hpm-cli": "~2.0",
+    "mdlint": "~0.1"
+  }
+}

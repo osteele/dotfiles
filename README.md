@@ -9,6 +9,8 @@ cd dotfiles
 brew bundle
 ./scripts/install
 bash ./macos/install.sh
+pip install -r requirements.txt
+npm install -g 
 ```
 
 ## Update machine from repo
