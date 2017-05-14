@@ -21,7 +21,10 @@ hash brew 2> /dev/null && [ -f $(brew --prefix autoenv)/activate.sh ] && source 
 # [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 eval $(thefuck --alias)
 
-source ~/.aliases
+if [[ -L ~/.zshenv ]]; then
+  DOTFILES=$(dirname $(readlink -nf ~/.zshenv))/..
+fi
+[[ -v DOTFILES ]] && . $DOTFILES/shell/aliases
 
 export EDITOR=code
 
