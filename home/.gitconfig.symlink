@@ -81,7 +81,6 @@
 [help]
 	format = web
 	browser = open
-	htmlpath = /usr/local/Cellar/git/1.8.4/share/doc/git-doc
 	autocorrect = 1
 
 [mergetool]
