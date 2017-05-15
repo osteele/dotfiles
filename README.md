@@ -92,10 +92,9 @@ where the ... are the secrets from the respective files.
 Then add this section to `.git/config`:
 
 ```bash
-cat > .git/config
-[filter "secrets"]
-    smudge = ./filters/smudge_secrets_filter
-    clean = ./filters/clean_secrets_filter
+git config filter.secrets.smudge  './filters/smudge_secrets_filter'
+git config filter.secrets.clean  './filters/clean_secrets_filter'
+git config diff.secrets.textconv './filters/smudge_secrets_filter'
 ```
 
 Now `git commit` will remove like-named secrets that are in the named in the `secrets` file, and `git checkout` will add them back.
