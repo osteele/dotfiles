@@ -89,18 +89,21 @@ Create a file `.git/config/secrets` with lines like this:
 
 where the ... are the secrets from the respective files.
 
-Then tell git to use the filters in this repo, and check out the files again:
+(The filters ignore the `#` lines, and apply all secrets to all files.)
+
+Then tell git to use the filters in this repo; and apply them to the filtered files:
 
 ```bash
 git config filter.secrets.file './.git/info/secrets'
 git config filter.secrets.smudge './filters/smudge_secrets_filter'
 git config filter.secrets.clean './filters/clean_secrets_filter'
 git config diff.secrets.textconv './filters/smudge_secrets_filter'
-git checkout HEAD
+./scripts/resmudge-files
 ```
 
 Now `git commit` will remove like-named secrets that are in the named in the `secrets` file, and `git checkout` will add them back.
 
 These filters differ from e.g. <http://git-secret.io> in that (1) these filters only replace the secret, not the whole file, and (2) these filters completely remove the secret (relying on its presence in another file), rather than encrypting it.
 
-This is very far from a general-purpose industrial-strength solution. It's just enough to let me add these files back to my dotfiles repo.
+This isn't a general-purpose, production-quality, solution.
+It's just enough to let me add these files back to my dotfiles repo.
