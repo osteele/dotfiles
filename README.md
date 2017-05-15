@@ -89,12 +89,14 @@ Create a file `.git/config/secrets` with lines like this:
 
 where the ... are the secrets from the respective files.
 
-Then add this section to `.git/config`:
+Then tell git to use the filters in this repo, and check out the files again:
 
 ```bash
-git config filter.secrets.smudge  './filters/smudge_secrets_filter'
-git config filter.secrets.clean  './filters/clean_secrets_filter'
+git config filter.secrets.file './.git/info/secrets'
+git config filter.secrets.smudge './filters/smudge_secrets_filter'
+git config filter.secrets.clean './filters/clean_secrets_filter'
 git config diff.secrets.textconv './filters/smudge_secrets_filter'
+git checkout HEAD
 ```
 
 Now `git commit` will remove like-named secrets that are in the named in the `secrets` file, and `git checkout` will add them back.
