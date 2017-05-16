@@ -27,6 +27,11 @@ setopt NO_FLOW_CONTROL # disable ^S/^Q
 setopt NUMERIC_GLOB_SORT # sort filenames numerically
 setopt RC_QUOTES # 'isn''t this convenient'
 
+#
+# Environment managers
+#
+hash rbenv 2>/dev/null && eval "$(rbenv init -)"
+hash direnv 2>/dev/null && eval "$(direnv hook zsh)"
 
 #
 # Directories

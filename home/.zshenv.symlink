@@ -8,11 +8,7 @@ if [[ -L ~/.zshenv ]]; then
 fi
 
 [[ -f ~/.travis/travis.sh ]] && source ~/.travis/travis.sh
-
-# Environment managers
-hash rbenv 2>/dev/null && eval "$(rbenv init -)"
 hash brew 2>/dev/null && [[ -f $(brew --prefix nvm)/nvm.sh ]] && source $(brew --prefix nvm)/nvm.sh
-hash direnv 2>/dev/null && eval "$(direnv hook zsh)"
 
 export PATH=~/anaconda3/bin:$PATH # conda
 PATH=/usr/local/opt/ccache/libexec:$PATH # ccache
