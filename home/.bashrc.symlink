@@ -8,6 +8,7 @@ export NVM_DIR=~/.nvm
 export PYTHONDONTWRITEBYTECODE=1
 
 export PATH=/usr/local/bin:$PATH # brew
+export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
 export PATH=/usr/local/opt/go/libexec/bin:$PATH # Go
 export PATH=~/anaconda3/bin:$PATH # conda
 export PATH=/usr/local/opt/ccache/libexec:$PATH # ccache
@@ -21,10 +22,10 @@ hash brew 2> /dev/null && [ -f $(brew --prefix autoenv)/activate.sh ] && source 
 # [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 eval $(thefuck --alias)
 
-if [[ -L ~/.zshenv ]]; then
-  DOTFILES=$(dirname $(readlink -nf ~/.zshenv))/..
+if [[ -L ~/.bashrc ]]; then
+  DOTFILES=$(dirname $(readlink -nf ~/.bashrc))/..
+  . $DOTFILES/shell/aliases
 fi
-[[ -v DOTFILES ]] && . $DOTFILES/shell/aliases
 
 export EDITOR=code
 
