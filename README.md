@@ -7,25 +7,13 @@ All shell commands below are intended to be run in the dotfiles directory.
 ## Provision a new machine
 
 ```shell
-brew bundle
 ./scripts/install
-bash ./macos/install.sh
-pip install -r requirements.txt
-npm install -g
 ```
 
-## Update machine from repo
-
-Run this after `git pull`, to update a machine that has already been provisioned.
+This can also be used after `git pull`, to update a machine that has already been provisioned.
 (This isn't necessary if the only changes were to already-linked dotfiles.)
 
 Warning: This overwrites over existing dotfiles without warning or confirmation.
-
-```shell
-./scripts/install
-brew bundle
-brew bundle cleanup --force
-```
 
 ## Update repo from machine
 

@@ -1,16 +1,9 @@
 #!/bin/bash -eu
 
-relpath(){ python -c "import os.path; print(os.path.relpath('$1','${2:-$PWD}'))"; }
-# -- http://stackoverflow.com/questions/2564634/bash-convert-absolute-path-into-relative-path-given-a-current-directory
-
-srcdir="$(dirname $0)"/home
-targetdir=~
-srcdir_rel="./$(relpath $srcdir $targetdir)"
-
-cd $targetdir
-
-while read -r -d '' link_target; do
-  basename="$(basename "$link_target")"
-  dotfile="${basename%.*}"
-  ln -sf "$link_target" "$dotfile"
-done < <(find "$srcdir_rel" -name \*.symlink -print0)
+if [[ "$OSTYPE" == darwin* ]]; then
+  bash ./macos/install.sh
+  brew bundle
+fi
+./scripts/install-dotfiles
+npm install -g
+pip install -r requirements.txt
