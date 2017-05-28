@@ -2,30 +2,40 @@
 # It should contain commands to set the command search path, plus other important environment variables.
 # `.zshenv' should not contain commands that produce output or assume the shell is attached to a tty.
 
-PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
+# from direnv stdlib
+has() {
+  type "$1" &>/dev/null
+}
+PATH_add() {
+  PATH=$1:$PATH
+  export PATH
+}
+
+PATH_add /usr/local/bin
+PATH_add /usr/local/opt/coreutils/libexec/gnubin
 if [[ -L ~/.zshenv ]]; then
   DOTFILES=$(dirname $(readlink -nf ~/.zshenv))/..
 fi
 
 [[ -f ~/.travis/travis.sh ]] && source ~/.travis/travis.sh
-hash brew 2>/dev/null && [[ -f $(brew --prefix nvm)/nvm.sh ]] && source $(brew --prefix nvm)/nvm.sh
+has brew && [[ -f $(brew --prefix nvm)/nvm.sh ]] && source $(brew --prefix nvm)/nvm.sh
 
-export PATH=~/anaconda3/bin:$PATH # conda
-PATH=/usr/local/opt/ccache/libexec:$PATH # ccache
-PATH=/usr/local/opt/go/libexec/bin:$PATH # Go
-PATH=/usr/local/share/npm/bin:$PATH
-PATH=./node_modules/.bin:$PATH # npm
-PATH=~/.cabal/bin:$PATH
-hash yarn 2> /dev/null && PATH=$(yarn global bin):$PATH # yarn
-PATH=$HOME/.rbenv/bin:$PATH # rbenv
-PATH=.gems/bin:$PATH
-[[ -v DOTFILES ]] && PATH=$DOTFILES/bin:$PATH
-PATH=~/bin:$PATH
+PATH_add ~/anaconda3/bin # conda
+PATH_add /usr/local/opt/ccache/libexec # ccache
+PATH_add /usr/local/opt/go/libexec/bin # Go
+PATH_add /usr/local/share/npm/bin
+PATH_add ./node_modules/.bin # npm
+PATH_add ~/.cabal/bin
+has yarn && PATH_add $(yarn global bin) # yarn
+PATH_add $HOME/.rbenv/bin # rbenv
+PATH_add .gems/bin
+[[ -v DOTFILES ]] && PATH_add $DOTFILES/bin
+PATH_add ~/bin
 
 MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
 MANPATH=/usr/local/share/man:$MANPATH
 
-if hash brew 2>/dev/null && hash go 2>/dev/null; then
+if has brew && has go; then
   export GOPATH=$(brew --prefix)/Cellar/go/site/$(go version | egrep -wo 'go(\d|\.)+' | cut -c3-)
 fi
 

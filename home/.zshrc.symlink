@@ -1,21 +1,19 @@
 # Paths
-# TODO who is adding prepending PATH between .zshenv and here?
-PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
+# TODO who is prepending PATH between .zshenv and here?
+PATH_add /usr/local/opt/coreutils/libexec/gnubin
 
-export EDITOR='subl -w'
 [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]] && source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 
-if [[ "$TERM_PROGRAM" = Hyper ]]; then
-#   prompt 'off'
-#   PROMPT='$ '
-  function precmd { echo -ne "\033]0;"$(echo ${PWD##*/})"\007" }
-fi
-
-# insert_sudo() { zle beginning-of-line; zle -U "sudo " }
 export EDITOR=code
+export LESSOPEN="| $(which highlight) %s --out-format xterm256 --line-numbers --quiet --force --style zenburn"
 
 AUTO_CD=true
 CDPATH=~/code:~/sites
+
+
+#
+# Zsh options
+#
 
 setopt AUTO_CD # `dir` instead of `cd dir`
 setopt AUTO_NAME_DIRS # show named variables in path
@@ -27,19 +25,35 @@ setopt NO_FLOW_CONTROL # disable ^S/^Q
 setopt NUMERIC_GLOB_SORT # sort filenames numerically
 setopt RC_QUOTES # 'isn''t this convenient'
 
+
 #
 # Environment managers
 #
-hash rbenv 2>/dev/null && eval "$(rbenv init -)"
-hash direnv 2>/dev/null && eval "$(direnv hook zsh)"
+
+has rbenv && eval "$(rbenv init -)"
+has direnv && eval "$(direnv hook zsh)"
+has direnv && alias tmux='direnv exec / tmux'
+
 
 #
 # Directories
 #
+
 alias -g dl=~/Downloads
 alias -g dt=~/Desktop
 alias -g code=~/code
 alias -g src=~/src
+
+
+#
+# Terminal Integration
+#
+
+if [[ "$TERM_PROGRAM" = Hyper ]]; then
+#   prompt 'off'
+#   PROMPT='$ '
+  function precmd { echo -ne "\033]0;"$(echo ${PWD##*/})"\007" }
+fi
 
 function iterm2_print_user_vars() {
   local git_branch_name=$(git symbolic-ref --short HEAD 2> /dev/null)
@@ -48,7 +62,6 @@ function iterm2_print_user_vars() {
   iterm2_set_user_var currentDir $(echo ${PWD##*/})
 }
 
-export LESSOPEN="| $(which highlight) %s --out-format xterm256 --line-numbers --quiet --force --style zenburn"
 
 #
 ## Filters
@@ -81,6 +94,7 @@ autoload -U zmv
 alias mmv='noglob zmv -W'
 
 [[ -v DOTFILES ]] && . $DOTFILES/shell/aliases
+
 
 #
 # Completions
