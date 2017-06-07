@@ -6,6 +6,7 @@ smudgable_files () {
   done
 }
 
-files=$(smudgable_files)
-rm -f "$@"
-git checkout HEAD -- "$@"
+declare -a files=$(smudgable_files)
+echo "removing" ${files}
+rm -f -- ${files[@]}
+git checkout HEAD -- ${files[@]}

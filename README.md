@@ -64,28 +64,33 @@ that don't have casks such as Microsoft Office.
 
 ## Secrets
 
-My `.gitconfig` and `.nprmc` contain secrets. The programs that read these files don't expand environment variables, so the standard techniques for removing secrets don't work.
+My `.gitconfig` and `.nprmc` contain secrets. The programs that read these files don't expand environment variables, so the standard techniques for removing secrets don't work. And, I don't want to encrypt the whole file, just the sensitive portions. This repo therefore uses a custom git filter, that smudges secrets from the macOS Keychain.
 
-Create a file `.git/config/secrets` with lines like this:
+Create entries in the macOS Keychain:
 
-    # .gitconfig
-    accesstoken = ...
+```bash
+$ security add-generic-password -U -a $USER -c gitf -C gitf -D 'git filter secret' -l GITHUB_ACCESS_TOKEN  -w …
+```
 
-    # .npmrc
-    _auth="..."
-    AuthSession=...
+Repeat for `NPM_AUTH_TOKEN` and `NPM_AUTH_SESSION`.
 
-where the ... are the secrets from the respective files.
+(`NPM_AUTH_SESSION` doesn't really need to be synced on the keychain, but npm stores it in `.npmrc` and I want to keep it out of the repo, so I'm going to war with the hammer I've got.)
 
-(The filters ignore the `#` lines, and apply all secrets to all files.)
+Create a file `.git/info/secrets`:
+
+    .gitconfig.symlink:
+      accesstoken: GITHUB_ACCESS_TOKEN
+    .npmrc.symlink:
+      _auth: NPM_AUTH_TOKEN
+      AuthSession: NPM_AUTH_SESSION
 
 Then tell git to use the filters in this repo; and apply them to the filtered files:
 
 ```bash
 git config filter.secrets.file './.git/info/secrets'
-git config filter.secrets.smudge './filters/smudge_secrets_filter'
-git config filter.secrets.clean './filters/clean_secrets_filter'
-git config diff.secrets.textconv './filters/smudge_secrets_filter'
+git config filter.secrets.smudge './filters/smudge_secrets_filter %f'
+git config filter.secrets.clean './filters/clean_secrets_filter %f'
+git config diff.secrets.textconv './filters/smudge_secrets_filter %f'
 ./scripts/resmudge-files
 ```
 
