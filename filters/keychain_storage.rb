@@ -16,21 +16,26 @@ end
 
 module Secrets
   class KeychainStore
-    def _keys_for(name, key) # label = secrets[name]
+    SECURITY_CMD = '/usr/bin/security'
+
+    def _keys_for(name, key)
       return ['-a', ENV['USER'], '-c', 'gitf', '-C', 'gitf', '-D', 'git filter secret', '-l', key]
     end
 
-    def get(name, key)
-      saved_secret = `#{Shellwords.join(['security', 'find-generic-password', '-w'] + self._keys_for(name, key))}`.chomp
+    def find(name, key)
+      command = Shellwords.join([
+        SECURITY_CMD, 'find-generic-password', '-w'] +
+        self._keys_for(name, key))
+      saved_secret = `#{command} 2>&1`.chomp
       return saved_secret if $?.exitstatus == 0
       return nil
     end
 
-    def update(name, key, value)
+    def update(name, key, password)
       command = Shellwords.join([
-        'security', 'add-generic-password',
+        SECURITY_CMD, 'add-generic-password',
         '-s', "#{REPO_NAME}/#{FNAME}/#{name}",
-        '-w', value,
+        '-w', password,
         '-U'] + self._keys_for(name, key))
       `#{command}`
       exit 1 unless $?.exitstatus == 0
