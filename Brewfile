@@ -1,4 +1,5 @@
 tap 'caskroom/cask'
+tap 'caskroom/fonts'
 tap 'homebrew/bundle'
 tap 'homebrew/core'
 tap 'homebrew/services'
@@ -13,11 +14,14 @@ brew 'fasd'
 
 # essentials
 brew 'coreutils'
+brew 'font-fira-code'
 brew 'reattach-to-user-namespace'
 brew 'tmux'
 
 # CLI
+brew 'cloc'
 brew 'docker'
+brew 'exa'
 brew 'ffmpeg'
 brew 'git'
 brew 'graphviz'
@@ -138,8 +142,6 @@ cask 'steam'
 
 # trial
 cask 'duet'
-cask 'gitify'
-cask 'gitscout'
 cask 'manuscripts'
 cask 'monodraw'
 cask 'spectacle-editor'
