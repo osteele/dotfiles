@@ -102,20 +102,22 @@ module.exports = {
     //   `@company/project`
     //   `project#1.0.1`
     plugins: [
-        'hyper-tabs-enhanced',
         'hyper-statusline',
         'hyperlinks',
         'hypercwd',
         // "hyperterm-paste",
         "hyperterm-dibdabs",
-        // "hyperterm-tabs",
         // "hyperterm-tab-icons",
-        "hyper-history",
         // "hyper-pane",
         // "hyper-papercolor",
         // "status-line",
         // "tabs",
         // "history"
+        "hyper-history",
+        'hyper-tabs-enhanced',
+        "hyperterm-tabs",
+        "hyper-alt-click",
+        "hyperterm-alternatescroll"
     ],
 
     // in development, you can create a directory under
