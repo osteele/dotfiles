@@ -78,35 +78,51 @@ brew 'rbenv-bundler'
 brew 'rbenv-gemset'
 
 ## Casks
-cask 'anvil'
+# editors & ides
 cask 'arduino'
 cask 'atom'
-cask 'ccmenu'
-cask 'cheatsheet'
-cask 'docker'
 cask 'expo-xde'
+cask 'nteract'
+cask 'visual-studio-code'
+cask 'typora'
+
+# clients
+cask 'keybase'
+cask 'sonos'
+cask 'skype'
+
+# git
 cask 'github-desktop'
 cask 'gitup'
-cask 'google-chrome'
-cask 'google-drive'
+
+# terminals
 cask 'hyper'
 cask 'iterm2'
-cask 'keybase'
+
+# data guis
+cask 'postico'
+cask 'robomongo'
+
+# developer
+cask 'anvil'
+cask 'ccmenu'
+cask 'docker'
 cask 'ksdiff'
 cask 'netspot'
 cask 'ngrok'
-cask 'nteract'
-cask 'postico'
-cask 'robomongo'
-cask 'shiori'
-cask 'skype'
-cask 'sonic-pi'
-cask 'supercollider'
-cask 'typora'
-cask 'visual-studio-code'
 cask 'wireshark'
 
-# licensed software
+# misc.
+cask 'cheatsheet'
+cask 'flux'
+cask 'google-chrome'
+cask 'google-drive'
+cask 'shiori'
+cask 'sonic-pi'
+cask 'steam'
+cask 'supercollider'
+
+# licensed
 cask 'alfred'
 cask 'arq'
 cask 'bartender'
@@ -135,17 +151,9 @@ cask 'soulver'
 cask 'sublime-text'
 cask 'vmware-fusion'
 
-# other commercial software
-cask 'flux'
-cask 'sonos'
-cask 'steam'
-
 # trial
 cask 'duet'
 cask 'manuscripts'
-cask 'monodraw'
-cask 'spectacle-editor'
-cask 'texpad'
 
 # QuickLooks
 cask 'betterzipql'
