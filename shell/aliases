@@ -10,6 +10,13 @@ alias o.='open .'
 # source: https://github.com/barryclark/bashstrap
 alias c='pygmentize -O style=monokai -f console256 -g'
 
+if ! type "$foobar_command_name" > /dev/null; then
+  alias ls='exa --group-directories-first'
+  alias la='exa -a'
+  alias ll='exa -l'
+  alias lt='\exa --tree'
+fi
+
 hash thefuck 2>/dev/null && eval $(thefuck --alias)
 alias crap=fuck
 alias doh=fuck
