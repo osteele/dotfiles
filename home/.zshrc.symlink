@@ -41,7 +41,7 @@ has direnv && alias tmux='direnv exec / tmux'
 
 alias -g dl=~/Downloads
 alias -g dt=~/Desktop
-alias -g code=~/code
+#alias -g code=~/code
 alias -g src=~/src
 
 
