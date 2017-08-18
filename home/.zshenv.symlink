@@ -36,7 +36,11 @@ MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
 MANPATH=/usr/local/share/man:$MANPATH
 
 if has brew && has go; then
-  export GOPATH=$(brew --prefix)/Cellar/go/site/$(go version | egrep -wo 'go(\d|\.)+' | cut -c3-)
+  export GOPATH=$HOME/go
+  export GOROOT=/usr/local/opt/go/libexec
+  export GOBIN=$GOPATH/bin
+  PATH_add $GOPATH/bin
+  PATH_add $GOROOT/bin
 fi
 
 # For use with `brew install curl-ca-bundle`
