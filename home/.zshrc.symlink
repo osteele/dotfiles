@@ -100,3 +100,6 @@ alias mmv='noglob zmv -W'
 # Completions
 #
 fpath=(~/.zsh-completions $fpath)
+
+# added by travis gem
+[ -f /Users/osteele/.travis/travis.sh ] && source /Users/osteele/.travis/travis.sh
