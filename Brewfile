@@ -1,3 +1,8 @@
+# Usage:
+#   brew bundle
+#   brew bundle cleanup
+#   brew bundle cleanup --force
+
 tap 'caskroom/cask'
 tap 'caskroom/fonts'
 tap 'homebrew/bundle'
@@ -14,7 +19,6 @@ brew 'fasd'
 
 # essentials
 brew 'coreutils'
-brew 'font-fira-code'
 brew 'reattach-to-user-namespace'
 brew 'tmux'
 
@@ -49,6 +53,7 @@ brew 'ruby'
 brew 'yarn'
 
 # libraries
+brew 'gmp'
 brew 'libyaml'
 brew 'oniguruma'
 brew 'openssl'
@@ -81,6 +86,7 @@ brew 'rbenv-gemset'
 # editors & ides
 cask 'arduino'
 cask 'atom'
+cask 'font-fira-code'
 cask 'expo-xde'
 cask 'nteract'
 cask 'visual-studio-code'
