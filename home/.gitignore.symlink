@@ -1,6 +1,7 @@
 # global ignore; used for all repos as per .gitconfig
 
 .\#*
+.direnv
 .DS_Store
 .env
 .envrc
