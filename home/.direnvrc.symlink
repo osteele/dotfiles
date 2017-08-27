@@ -1,0 +1,5 @@
+layout_anaconda() {
+  local ANACONDA_HOME=~/anaconda3
+  PATH_add "$ANACONDA_HOME/bin"
+  source activate $1
+}
