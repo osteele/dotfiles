@@ -2,30 +2,30 @@
 
 set -g default-shell /usr/local/bin/zsh
 
-# there's no i in colour
+# color
 set -g default-terminal 'screen-256color'
 
-# matlab: 1; python: 0
 set -g base-index 1
 set-window-option -g pane-base-index 1
+# 1-based numbering
 
 # shuffle shuffle Mr. Gibbon
 set -g renumber-windows on
 setw -g automatic-rename off
 
-# remove administrative debris
+# status line
 set -g status-left ''
 set -g status-right ''
 
-# first as tragedy
+# history
 set -g history-limit 100000
 
-# eek!
+# mouse
 set -g mouse on
 
-# memento
+# reload
 bind r source-file ~/.tmux.conf \; display "It's the dawn of a new day"
 
-# panes in the glass
+# panes
 bind | split-window -h
 bind - split-window -v
