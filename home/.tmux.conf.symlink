@@ -1,13 +1,11 @@
-# magpied from lmgtfy "tmux dotfiles" page 1
-
 set -g default-shell /usr/local/bin/zsh
 
 # color
 set -g default-terminal 'screen-256color'
 
-set -g base-index 1
-set-window-option -g pane-base-index 1
 # 1-based numbering
+# set -g base-index 1
+# set-window-option -g pane-base-index 1
 
 # shuffle shuffle Mr. Gibbon
 set -g renumber-windows on
