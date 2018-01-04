@@ -24,3 +24,5 @@ pd() {
 # added by Anaconda 2.0.1 installer
 # export PATH="/Users/osteele/anaconda/bin:$PATH"
 #if [ -e /Users/osteele/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/osteele/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+# Rust
+export PATH="$HOME/.cargo/bin:$PATH"
