@@ -1,15 +1,16 @@
-alias g=git
-hash hub 2> /dev/null && alias git=hub
-alias less='less -m -N -g -i -J --line-numbers --underline-special'
+# General
 alias paths='printenv PATH | tr : "\n"'
 
+# edit, open, file listing
 alias e='$EDITOR'
 alias o=open
 alias e.='$EDITOR .'
 alias o.='open .'
+alias less='less -m -N -g -i -J --line-numbers --underline-special'
 # source: https://github.com/barryclark/bashstrap
 alias c='pygmentize -O style=monokai -f console256 -g'
 
+# ls
 if ! type "$foobar_command_name" > /dev/null; then
   alias ls='exa --group-directories-first'
   alias la='exa -a'
@@ -17,13 +18,7 @@ if ! type "$foobar_command_name" > /dev/null; then
   alias lt='\exa --tree'
 fi
 
-hash thefuck 2>/dev/null && eval $(thefuck --alias)
-alias crap=fuck
-alias doh=fuck
-alias please=fuck
-
-alias jn='jupyter notebook'
-
+# fasd
 # alias a='fasd -a'        # any
 # alias s='fasd -si'       # show / search / select
 # alias d='fasd -d'        # directory
@@ -33,6 +28,38 @@ alias jn='jupyter notebook'
 # alias z='fasd_cd -d'     # cd, same functionality as j in autojump
 # alias zz='fasd_cd -d -i' # cd with interactive selection
 
+# correction
+hash thefuck 2>/dev/null && eval $(thefuck --alias)
+alias crap=fuck
+alias doh=fuck
+alias please=fuck
+
+# Git
+alias g=git
+hash hub 2> /dev/null && alias git=hub
+
+# Python
+alias jn='jupyter notebook'
+alias nb='jupyter lab --ip=127.0.0.1 --NotebookApp.token= --no-browser'
+alias pr='pipenv run'
+alias prp='pipenv run python'
+
+function py {
+  if [[ -z $1 || $1 == list ]]; then
+    conda env list
+  elif [[ $1 == system ]]; then
+    source deactivate
+  elif [[ $1 == create ]]; then
+    echo conda create --name "${@:2}"
+    # source activate "$1"
+  elif [[ $1 == delete ]]; then
+    conda remove --name "${@:2}".0 --all
+  else
+    source activate "$1"
+  fi
+}
+
+# docker
 alias dc=docker-compose
 alias dm=docker-machine
 
@@ -50,24 +77,5 @@ function dm.a {
   else
     eval "$(docker-machine env $1)"
     echo "Set active host to $1"
-  fi
-}
-
-alias sd.web='(cd ~/sites/softdes.web && jekyll serve)'
-alias htl.web='(cd ~/sites/htl.org && jekyll serve)'
-alias ad.web='(cd ~/code/assignment-dashboard && docker-compose up)'
-
-function py {
-  if [[ -z $1 || $1 == list ]]; then
-    conda env list
-  elif [[ $1 == system ]]; then
-    source deactivate
-  elif [[ $1 == create ]]; then
-    echo conda create --name "${@:2}"
-    # source activate "$1"
-  elif [[ $1 == delete ]]; then
-    conda remove --name "${@:2}".0 --all
-  else
-    source activate "$1"
   fi
 }
