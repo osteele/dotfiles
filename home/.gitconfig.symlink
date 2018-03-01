@@ -62,7 +62,7 @@
 	compactionHeuristic = true
 
 [gpg]
-	# program = /usr/local/bin/gpg
+	program = /usr/local/bin/krgpg
 
 [help]
 	format = web
@@ -164,3 +164,7 @@
 [mergetool "Kaleidoscope"]
 	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustExitCode = true
+[commit]
+	gpgSign = true
+[tag]
+	forceSignAnnotated = true
