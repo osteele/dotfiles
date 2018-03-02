@@ -2,46 +2,19 @@
 # It should contain commands to set the command search path, plus other important environment variables.
 # `.zshenv' should not contain commands that produce output or assume the shell is attached to a tty.
 
-# from direnv stdlib
-has() {
-  type "$1" &>/dev/null
-}
-PATH_add() {
-  PATH=$1:$PATH
-  export PATH
-}
-
-PATH_add /usr/local/bin
-PATH_add /usr/local/opt/coreutils/libexec/gnubin
 if [[ -L ~/.zshenv ]]; then
   DOTFILES=$(dirname $(readlink -nf ~/.zshenv))/..
 fi
 
-[[ -f ~/.travis/travis.sh ]] && source ~/.travis/travis.sh
-has brew && [[ -f $(brew --prefix nvm)/nvm.sh ]] && source $(brew --prefix nvm)/nvm.sh
+# from direnv stdlib
+has() {
+  type "$1" &>/dev/null
+}
 
-PATH_add ~/anaconda3/bin # conda
-PATH_add /usr/local/opt/ccache/libexec # ccache
-PATH_add /usr/local/opt/go/libexec/bin # Go
-PATH_add /usr/local/share/npm/bin
-PATH_add ./node_modules/.bin # npm
-PATH_add ~/.cabal/bin
-has yarn && PATH_add $(yarn global bin) # yarn
-PATH_add $HOME/.rbenv/bin # rbenv
-PATH_add .gems/bin
-[[ -v DOTFILES ]] && PATH_add $DOTFILES/bin
-PATH_add ~/bin
+has brew && [[ -f $(brew --prefix nvm)/nvm.sh ]] && source $(brew --prefix nvm)/nvm.sh
 
 MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
 MANPATH=/usr/local/share/man:$MANPATH
-
-if has brew && has go; then
-  export GOPATH=$HOME/go
-  export GOROOT=/usr/local/opt/go/libexec
-  export GOBIN=$GOPATH/bin
-  PATH_add $GOPATH/bin
-  PATH_add $GOROOT/bin
-fi
 
 # For use with `brew install curl-ca-bundle`
 # export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt

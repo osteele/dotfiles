@@ -68,3 +68,54 @@ if [[ ! -d "$TMPDIR" ]]; then
 fi
 
 TMPPREFIX="${TMPDIR%/}/zsh"
+
+# PATH
+
+# from direnv stdlib
+has() {
+  type "$1" &>/dev/null
+}
+
+PATH_add() {
+  PATH=$1:$PATH
+  export PATH
+}
+
+PATH_add /usr/local/bin
+PATH_add /usr/local/opt/coreutils/libexec/gnubin
+PATH_add /usr/local/opt/ccache/libexec
+[[ -v DOTFILES ]] && PATH_add $DOTFILES/bin
+PATH_add ~/bin
+
+# Go
+# PATH_add /usr/local/opt/go/libexec/bin
+export GOPATH=$HOME/go:$HOME/code/go
+# export GOROOT=/usr/local/opt/go/libexec
+PATH_add /usr/local/opt/go/libexec/bin
+# export GOBIN=$GOPATH/bin
+PATH_add $HOME/src/go/bin:$HOME/go/bin
+# PATH_add $GOROOT/bin
+
+# Haskell
+PATH_add ~/.cabal/bin
+
+# Node
+PATH_add /usr/local/share/npm/bin
+PATH_add ./node_modules/.bin
+has yarn && PATH_add $(yarn global bin)
+
+# Python
+# added by Anaconda 2.0.1 installer
+# PATH_add ~/anaconda/bin
+# PATH_add ~/anaconda3/bin # conda
+
+# Ruby
+PATH_add ~/.rvm/bin
+PATH_add ~/.rbenv/bin
+# PATH_add ./.gems/bin
+
+# Rust
+PATH_add ~/.cargo/bin
+
+# Travis
+[[ -f ~/.travis/travis.sh ]] && source ~/.travis/travis.sh
