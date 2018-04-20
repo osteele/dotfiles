@@ -21,6 +21,7 @@ setopt NO_CLOBBER # `echo > file` requires `file` not exist
 setopt NO_FLOW_CONTROL # disable ^S/^Q
 setopt NUMERIC_GLOB_SORT # sort filenames numerically
 setopt RC_QUOTES # 'isn''t this convenient'
+setopt interactivecomments
 
 
 #
