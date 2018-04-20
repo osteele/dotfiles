@@ -1,9 +1,9 @@
 -- Source: http://dev.stephendiehl.com/hask/
 import Control.Applicative
 import Control.Monad
-import Control.Concurrent
-import Control.Concurrent.Async
-import Control.Parallel
+-- import Control.Concurrent
+-- import Control.Concurrent.Async
+-- import Control.Parallel
 
 import Data.String
 import Data.Char
@@ -11,11 +11,11 @@ import Data.List
 import Data.Monoid
 import Control.Monad.IO.Class
 
-
 :set prompt "λ: "
 
 :set -fno-warn-unused-imports
+:set -Wno-type-defaults
+
 :def hlint const . return $ ":! hlint \"src\""
 :def hoogle \s -> return $ ":! hoogle --count=15 \"" ++ s ++ "\""
 :def pl \s -> return $ ":! pointfree \"" ++ s ++ "\""
-
