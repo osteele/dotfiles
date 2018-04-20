@@ -167,6 +167,12 @@ venv.bak/
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-.history
+# added -- ows
+.vscode
+*.code-workspace
 
 # End of https://www.gitignore.io/api/macos
+
+.direnv
+.history
+.netlify
