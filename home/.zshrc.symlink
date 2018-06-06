@@ -103,3 +103,13 @@ fpath=(~/.zsh-completions $fpath)
 [ -f /Users/osteele/.travis/travis.sh ] && source /Users/osteele/.travis/travis.sh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+export GPG_TTY=$(tty)
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/osteele/sites/cloudfront-auth/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/osteele/sites/cloudfront-auth/node_modules/tabtab/.completions/serverless.zsh
