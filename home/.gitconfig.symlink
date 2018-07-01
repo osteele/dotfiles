@@ -2,6 +2,7 @@
 	name = Oliver Steele
 	email = steele@osteele.com
 	accesstoken = $secret(accesstoken)
+	signingkey = $secret(signingkey)
 
 [github]
 	user = osteele
@@ -88,7 +89,7 @@
 	# diff = diff-highlight | less
 
 [pull]
-	rebase = preserve
+	rebase = true
 
 [sequence]
 	editor = rebase-editor
