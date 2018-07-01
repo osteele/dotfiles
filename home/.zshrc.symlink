@@ -113,3 +113,7 @@ export GPG_TTY=$(tty)
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
 [[ -f /Users/osteele/sites/cloudfront-auth/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/osteele/sites/cloudfront-auth/node_modules/tabtab/.completions/serverless.zsh
+
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/osteele/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/osteele/
