@@ -1,0 +1,13 @@
+# linters
+autopep8
+flake8
+flake8-builtins
+flake8-docstrings
+flake8-import-order
+flake8-isort
+flake8-polyfill
+flake8-rst-docstrings
+isort
+
+# other
+click

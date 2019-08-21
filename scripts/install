@@ -4,6 +4,12 @@ if [[ "$OSTYPE" == darwin* ]]; then
   bash ./macos/install.sh
   brew bundle
 fi
+
+mkdir -p ~/.bash_it
+mkdir -p ~/.node-completion
+touch ~/.bash_it/bash_it.sh
 ./scripts/install-dotfiles
+
 npm install -g
-pip install -r requirements.txt
+pip2 install -r python2-packages.txt
+pip3 install -r python3-packages.txt

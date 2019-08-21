@@ -1,0 +1,27 @@
+# linters
+autopep8
+flake8
+flake8-builtins
+flake8-docstrings
+flake8-import-order
+flake8-isort
+flake8-polyfill
+flake8-rst-docstrings
+pycodestyle
+pydocstyle
+pyflakes
+
+# other
+click
+keyring
+mypy
+Pygments
+python-dateutil
+python-osc
+pytz
+requests
+tabulate
+
+# MCU development
+adafruit-ampy
+rshell
