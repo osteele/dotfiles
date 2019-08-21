@@ -117,3 +117,5 @@ export GPG_TTY=$(tty)
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f /Users/osteele/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/osteele/
+
+export PATH=/Users/osteele/.local/bin:$PATH

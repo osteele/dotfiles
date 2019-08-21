@@ -11,7 +11,7 @@ alias less='less -m -N -g -i -J --line-numbers --underline-special'
 alias c='pygmentize -O style=monokai -f console256 -g'
 
 # ls
-if ! type "$foobar_command_name" > /dev/null; then
+if type exa > /dev/null; then
   alias ls='exa --group-directories-first'
   alias la='exa -a'
   alias ll='exa -l'
@@ -30,9 +30,7 @@ fi
 
 # correction
 hash thefuck 2>/dev/null && eval $(thefuck --alias)
-alias crap=fuck
 alias doh=fuck
-alias please=fuck
 
 # Git
 alias g=git

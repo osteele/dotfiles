@@ -11,15 +11,10 @@
 	ci = commit -a
 	co = checkout
 	st = status
-	find-commits = log --oneline -F --grep
-	changes = diff --name-status -r
 	amend = commit -a -C HEAD --amend
 	rev = checkout HEAD
 	p4-ci = !git-p4 rebase ; git-p4 submit --reset
 	# from nuclear squid
-	l = log --decorate --graph --pretty=tformat:'%C(yellow)%h%Cred%d %Cblue[%an]%Creset %s %Cgreen(%cr)%Creset%N'
-	# l = log --graph --pretty=tformat:'%h %d %an %s' --abbrev-commit
-	lg = log --graph --pretty=format:'%Cred%h%Creset %an -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 	ignored = ls-files --exclude-standard --ignored --others
 	# from http://www.saintsjd.com/2012/01/a-better-ui-for-git/
 	stage = add -u
@@ -27,6 +22,8 @@
 	switch = !legit switch \"$@\"
 	ribbon = tag --force _ribbon origin/master
 	catchup = log --pretty=oneline --abbrev-commit --decorate --reverse --topo-order _ribbon..origin/master
+
+	# legit
 	branches = !legit branches
 	sprout = !legit sprout \"$@\"
 	unpublish = !legit unpublish \"$@\"
@@ -35,11 +32,22 @@
 	publish = !legit publish \"$@\"
 	graft = !legit graft \"$@\"
 
-[branch]
-	autosetuprebase = always
+	# own
+	prune-origin = remote prune origin
+	prune-merged = !bash -c \"git branch --merged dev | egrep -v '\\s(master|dev)$' | xargs git branch -d\"
+
+	# logs
+	find-commits = log --oneline -F --grep
+	# changes = diff --name-status -r
+	l = log --decorate --graph --pretty=tformat:'%C(yellow)%h%Cred%d %Cblue[%an]%Creset %s %Cgreen(%cr)%Creset%N'
+	# l = log --graph --pretty=tformat:'%h %d %an %s' --abbrev-commit
+	last = log -1 HEAD
+	lg = log --graph --pretty=format:'%Cred%h%Creset %an -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	pr-log = --no-pager log origin/dev..HEAD --format='%h *%s*%n%n%b' --reverse
+	clog = !echo git --no-pager log .. --format='%h *%s*%n%n%b' --reverse
 
 [commit]
-	# gpgsign = true
+#	gpgsign = true
 
 [credential]
 	helper = osxkeychain
@@ -166,6 +174,10 @@
 	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustExitCode = true
 [commit]
-	gpgSign = true
+	# gpgSign = true
 [tag]
 	forceSignAnnotated = true
+[gc]
+	autoDetach = false
+[rerere]
+	enabled = true
