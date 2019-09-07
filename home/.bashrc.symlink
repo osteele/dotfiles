@@ -77,3 +77,5 @@ export SCM_CHECK=false
 source $BASH_IT/bash_it.sh
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export HOMEBREW_NO_AUTO_UPDATE=1
