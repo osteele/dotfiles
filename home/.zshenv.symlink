@@ -5,7 +5,7 @@
 # TODO remove
 export PATH=/usr/local/opt/coreutils/libexec/gnubin/:$PATH
 if [[ -L ~/.zshenv ]]; then
-  DOTFILES=$(dirname $(readlink -nf ~/.zshenv))/..
+  DOTFILES=$(dirname "$(readlink -nf ~/.zshenv)")/..
 fi
 
 # from direnv stdlib

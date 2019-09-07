@@ -23,8 +23,8 @@ hash brew 2> /dev/null && [ -f $(brew --prefix autoenv)/activate.sh ] && source 
 eval $(thefuck --alias)
 
 if [[ -L ~/.bashrc ]]; then
-  DOTFILES=$(dirname $(readlink -nf ~/.bashrc))/..
-  . $DOTFILES/shell/aliases
+  DOTFILES=$(dirname "$(readlink -nf ~/.bashrc)")/..
+  . "${DOTFILES}/shell/aliases"
 fi
 
 export EDITOR=code

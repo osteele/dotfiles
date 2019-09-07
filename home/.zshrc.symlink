@@ -91,7 +91,7 @@ alias -s js=subl
 autoload -U zmv
 alias mmv='noglob zmv -W'
 
-[[ -v DOTFILES ]] && . $DOTFILES/shell/aliases
+[[ -v DOTFILES ]] && . "${DOTFILES}/shell/aliases"
 
 
 #
