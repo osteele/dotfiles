@@ -90,8 +90,11 @@ brew 'terminal-notifier'
 # trial
 brew 'git-extras'
 
-## Casks
-# editors & ides
+###
+### Casks
+###
+
+## editors & ides
 cask 'arduino'
 cask 'atom'
 cask 'font-fira-code'
@@ -99,18 +102,19 @@ cask 'expo-xde'
 cask 'nteract'
 cask 'typora'
 
-# clients
+## clients
 cask 'keybase'
 cask 'sonos'
 cask 'skype'
 
-# data guis
+## data guis
 cask 'postico'
 cask 'robomongo'
 
-# developer
+## developer
 cask 'anvil'
 cask 'ccmenu'
+cask 'dash'
 cask 'docker'
 cask 'github'
 cask 'iterm2'
@@ -120,17 +124,15 @@ cask 'ngrok'
 cask 'visual-studio-code'
 cask 'wireshark'
 
-# misc.
+## misc.
 cask 'cheatsheet'
 cask 'flux'
+cask 'google-backup-and-sync'
 cask 'google-chrome'
-# cask 'google-drive'
-# cask 'shiori'
-# cask 'sonic-pi'
 cask 'steam'
 cask 'supercollider'
 
-# licensed
+## licensed
 cask 'alfred'
 cask 'arq'
 cask 'bartender'
@@ -154,18 +156,22 @@ cask 'pdfpen'
 cask 'postico'
 cask 'rescuetime'
 cask 'screenflow'
-cask 'setapp'
 cask 'scrivener'
+cask 'setapp'
 cask 'sketch'
 cask 'soulver'
+
+## not currently used
+# cask 'shiori'
+# cask 'sonic-pi'
 # cask 'sublime-text'
 # cask 'vmware-fusion'
 
-# trial
+## trial
 # cask 'duet'
 cask 'manuscripts'
 
-# QuickLooks
+## QuickLooks
 cask 'betterzipql'
 cask 'jupyter-notebook-ql'
 cask 'qlcolorcode'
@@ -179,11 +185,13 @@ cask 'quicklook-csv'
 cask 'quicklook-json'
 cask 'suspicious-package' # also an app
 
-# Installed via App Store:
-# cask 'base'
-cask 'dash'
+## Installed via App Store
 # cask 'fantastical'
 # cask 'gemini'
+# cask 'kaleidoscope'
 # cask 'kindle'
 # cask 'wunderlist'
 # cask 'xscope'
+
+## Install via SetApp
+# cask 'base'
