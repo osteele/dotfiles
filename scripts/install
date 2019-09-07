@@ -10,6 +10,15 @@ mkdir -p ~/.node-completion
 touch ~/.bash_it/bash_it.sh
 ./scripts/install-dotfiles
 
-npm install -g
 pip2 install -r python2-packages.txt
 pip3 install -r python3-packages.txt
+
+jq '.dependencies|keys' package.json | python3 <(cat <<EOF
+import subprocess, sys
+result = subprocess.run(['npm', 'list', '-g', '--depth', '0', '--parseable'], capture_output=True)
+installed = {s.split('/')[-1] for s in result.stdout.decode().strip().split('\n')[1:]}
+for package in set(eval(sys.stdin.read())) - installed:
+  print(f'Installing {package}...')
+  subprocess.run(['npm', 'install', '-g', package])
+EOF
+)
