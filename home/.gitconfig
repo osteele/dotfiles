@@ -2,11 +2,10 @@
 	name = Oliver Steele
 	email = steele@osteele.com
 	accesstoken = $secret(accesstoken)
-	signingkey = $secret(signingkey)
 
 [github]
 	user = osteele
-
+ 
 [alias]
 	ci = commit -a
 	co = checkout

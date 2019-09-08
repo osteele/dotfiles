@@ -19,7 +19,7 @@ Warning: This overwrites over existing dotfiles without warning or confirmation.
 
 ### Add unlinked dotfiles
 
-For each dotfile in HOME for which there's a corresponding `dotfiles/home/*.symlink` target, but the HOME dotfile is not a
+For each dotfile in HOME for which there's a corresponding `dotfiles/home/*` target, but the HOME dotfile is not a
 link to that symlink target, update the dotfiles symlink target, and replace the HOME file
 by a link to it.
 
@@ -31,7 +31,7 @@ git commit -a 'Update dotfiles'
 ### Add a dotfile
 
 ```shell
-touch home/.rcfile.symlink
+touch home/.rcfile
 ./scripts/add-dotfiles
 git commit -a 'Update dotfiles'
 ```

@@ -1,5 +1,8 @@
 #!/bin/bash -eu
 
+# Copy dotfiles from the home directory into this repo, and replace
+# them by symlinks.
+
 relpath(){ python -c "import os.path; print(os.path.relpath('$1','${2:-$PWD}'))"; }
 # -- http://stackoverflow.com/questions/2564634/bash-convert-absolute-path-into-relative-path-given-a-current-directory
 
@@ -7,16 +10,17 @@ srcdir="$(dirname $0)"/../home
 targetdir=~
 srcdir_rel="./$(relpath $srcdir $targetdir)"
 
-cd $targetdir
+cd "$targetdir"
+
+DRY_RUN_PREFIX=echo
 
 while read -r -d '' repo_file; do
   basename="$(basename "$repo_file")"
-  dotfile="${basename%.*}"
-  if [[ ! -f "$dotfile" ]]; then
-    echo "$dotfile is not a regular file"
+  if [[ ! -f "$basename" ]]; then
+    echo "$basename is not a regular file; skipping"
   fi
-  if [[ -f "$dotfile" && ! -L "$dotfile" ]]; then
-    cp "$dotfile" "$repo_file"
-    ln -sf "$repo_file" "$dotfile"
+  if [[ -f "$basename" && ! -L "$basename" ]]; then
+    ${DRY_RUN_PREFIX:-} cp "$basename" "$repo_file"
+    ${DRY_RUN_PREFIX:-} ln -sf "$repo_file" "$basename"
   fi
-done < <(find "$srcdir_rel" -name \*.symlink -print0)
+done < <(find "$srcdir_rel" -name \* -print0)

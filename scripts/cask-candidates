@@ -1,5 +1,7 @@
 #!/bin/bash -eu
 
+# Print applications which could have been installed from Homebrew casks.
+
 app_store_apps () {
   # source: http://osxdaily.com/2013/09/28/list-mac-app-store-apps-terminal/
   find /Applications -path '*Contents/_MASReceipt/receipt' -maxdepth 4 -print | \
