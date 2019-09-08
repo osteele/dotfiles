@@ -53,6 +53,11 @@ if [[ "$TERM_PROGRAM" = Hyper ]]; then
   function precmd { echo -ne "\033]0;"$(echo ${PWD##*/})"\007" }
 fi
 
+if [[ ! -z "$ITERM_PROFILE" ]]; then
+  PROMPT='⊳ '
+  PROMPT2='⨽ '
+fi
+
 function iterm2_print_user_vars() {
   local git_branch_name=$(git symbolic-ref --short HEAD 2> /dev/null)
   [[ "$git_branch_name" == master ]] && git_branch_name=
