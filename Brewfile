@@ -3,7 +3,7 @@
 #   brew bundle cleanup
 #   brew bundle cleanup --force
 
-tap 'caskroom/cask'
+# tap 'caskroom/cask'
 tap 'caskroom/fonts'
 tap 'homebrew/bundle'
 tap 'homebrew/core'
@@ -35,19 +35,25 @@ brew 'httpie'
 brew 'imagemagick'
 brew 'jq'
 brew 'lame'
+brew 'mackup'
 brew 'mr'
 brew 'netlify-cli'
+brew 'pandoc'
 brew 'pv'
 brew 'ripgrep'
 brew 'rlwrap'
 brew 'ssh-copy-id'
+brew 'the_silver_searcher'
 brew 'tldr'
 brew 'trash'
 brew 'wget'
 
-# languages
+# language support
 brew 'go'
 brew 'node'
+brew 'nvm'
+brew 'pipenv'
+brew 'pyenv'
 brew 'python'
 brew 'python@2'
 brew 'python3'
@@ -107,20 +113,20 @@ cask 'keybase'
 cask 'sonos'
 cask 'skype'
 
-## data guis
-cask 'postico'
-cask 'robomongo'
-
-## developer
+## developer apps
 cask 'anvil'
+cask 'altair-graphql-client'
 cask 'ccmenu'
 cask 'dash'
 cask 'docker'
 cask 'github'
+# cask 'graphiql'
 cask 'iterm2'
 cask 'ksdiff'
 cask 'netspot'
 cask 'ngrok'
+cask 'postico'
+cask 'robomongo'
 cask 'visual-studio-code'
 cask 'wireshark'
 
