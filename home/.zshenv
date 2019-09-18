@@ -29,4 +29,5 @@ fi
 has pyenv && PATH="$HOME/.pyenv/bin:$PATH"
 has pyenv && eval "$(pyenv init -)"
 
-export HOMEBREW_NO_AUTO_UPDATE=1
+source ~/.env.shared
+

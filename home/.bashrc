@@ -4,8 +4,6 @@ export NVM_DIR=~/.nvm
 # added by travis gem
 # [ -f /Users/osteele/.travis/travis.sh ] && source /Users/osteele/.travis/travis.sh
 
-# Python
-export PYTHONDONTWRITEBYTECODE=1
 
 export PATH=/usr/local/bin:$PATH # brew
 export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
@@ -78,4 +76,4 @@ source $BASH_IT/bash_it.sh
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-export HOMEBREW_NO_AUTO_UPDATE=1
+source ~/.env.shared
