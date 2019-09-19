@@ -1,4 +1,5 @@
-source ~/.bashrc
+. ~/.profile
+. ~/.bashrc
 
 # {{{
 # Node Completion - Auto-generated, do not touch.
