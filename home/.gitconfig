@@ -55,7 +55,7 @@
 	excludesfile = /Users/osteele/.gitignore
 	attributesfile = /Users/osteele/.gitattributes
 	quotepath = false
-	pager = diff-so-fancy | less --tabs=4 -RFX # requires diff-so-fancy
+	pager = npx diff-so-fancy | less --tabs=4 -RFX # requires diff-so-fancy
 	editor = code --wait
 	whitespace = trailing-space,space-before-tab,indent-with-non-tab
 
@@ -99,7 +99,7 @@
 	rebase = true
 
 [sequence]
-	editor = rebase-editor
+	editor = npx rebase-editor
 
 [branch "*branch-name*"]
 	rebase = true
