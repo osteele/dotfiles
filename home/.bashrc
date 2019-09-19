@@ -10,7 +10,6 @@ export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
 export PATH=/usr/local/opt/go/libexec/bin:$PATH # Go
 export PATH=~/anaconda3/bin:$PATH # conda
 export PATH=/usr/local/opt/ccache/libexec:$PATH # ccache
-export PATH=./node_modules/.bin:$PATH # npm
 hash yarn 2> /dev/null && export PATH=$(yarn global bin):$PATH # yarn
 export PATH="$HOME/.rbenv/bin:$PATH" # rbenv
 export PATH=~/bin:$PATH

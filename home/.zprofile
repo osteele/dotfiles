@@ -101,7 +101,6 @@ PATH_add ~/.cabal/bin
 
 # Node
 PATH_add /usr/local/share/npm/bin
-PATH_add ./node_modules/.bin
 has yarn && PATH_add $(yarn global bin)
 
 # Python
