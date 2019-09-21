@@ -7,21 +7,26 @@ flake8-import-order
 flake8-isort
 flake8-polyfill
 flake8-rst-docstrings
+mypy
 pycodestyle
 pydocstyle
 pyflakes
 
-# other
+# CLI support
 click
-keyring
-mypy
-Pygments
+semver
+tabulate
+
+# the missing libraries
 python-dateutil
-python-osc
 pytz
 requests
-tabulate
+
+# other
+keyring
+Pygments
 
 # MCU development
 adafruit-ampy
+python-osc
 rshell
