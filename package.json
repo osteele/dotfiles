@@ -6,7 +6,7 @@
   "license": "MIT",
   "requirements": {},
   "dependencies": {
-    "diff-so-fancy": "~0.11",
+    "diff-so-fancy": "~1.2.7",
     "eslint": "~6.4",
     "mdlint": "~0.1",
     "rebase-editor": "~2.0.5"
