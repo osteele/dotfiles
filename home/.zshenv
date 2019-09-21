@@ -2,7 +2,7 @@
 # It should contain commands to set the command search path, plus other important environment variables.
 # `.zshenv' should not contain commands that produce output or assume the shell is attached to a tty.
 
-# TODO remove
+# TODO: remove
 export PATH=/usr/local/opt/coreutils/libexec/gnubin/:$PATH
 if [[ -L ~/.zshenv ]]; then
   DOTFILES=$(dirname "$(readlink -nf ~/.zshenv)")/..
@@ -29,5 +29,5 @@ fi
 has pyenv && PATH="$HOME/.pyenv/bin:$PATH"
 has pyenv && eval "$(pyenv init -)"
 
-source ~/.env.shared
-
+test -e "${HOME}/.env.shared" && source "${HOME}/.env.shared"
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

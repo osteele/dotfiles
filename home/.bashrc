@@ -76,3 +76,6 @@ source $BASH_IT/bash_it.sh
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 source ~/.env.shared
+
+# iTerm integration breaks the prompt inside VSCode
+[[ "$TERM_PROGRAM" == vscode ]] && unset PROMPT_COMMAND
