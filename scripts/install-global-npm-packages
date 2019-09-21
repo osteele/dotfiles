@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
+"""Globally install (via npm -g) packages listed in package.json.
+"""
+import json
 import subprocess
 import sys
-import json
 from pathlib import Path
+
+import semver
 
 
 def shellexec(*cmd):
@@ -11,16 +15,48 @@ def shellexec(*cmd):
     return result.stdout.rstrip()
 
 
-deps = json.load(Path("package.json").open())["dependencies"]
+package_json = json.load(Path("package.json").open())
+deps = package_json.get("dependencies", {})
+deps.update(package_json.get("devDependencies", {}))
 
 npm_root_dir = shellexec("npm", "root", "-g")
 installed = {
-    p.name: shellexec("jq", ".version", json_path)
+    p.name: shellexec("jq", ".version", json_path).strip("'\"")
     for p in [p for p in Path(npm_root_dir).iterdir()]
     for json_path in [p / "package.json"]
     if json_path.is_file()
 }
 
-for package in deps - installed.keys():
-    print(f"Installing {package}...")
-    shellexec("npm", "install", "-g", package)
+
+def normalize_semver(version):
+    parts = version.split(".")
+    if len(parts) < 3:
+        version = version + "".join([".0"] * (3 - len(parts)))
+    return version
+
+
+def semver_match(version, match_expr):
+    if " " in match_expr:
+        return all(semver_match(version, expr) for expr in match_expr.split())
+    if match_expr[0] == "~":
+        parts = match_expr[1:].split(".")
+        parts[-1] = str(1 + int(parts[-1]))
+        return semver_match(version, f">={match_expr[1:]} <{'.'.join(parts)}")
+    return semver.match(normalize_semver(version), normalize_semver(match_expr))
+
+
+outdated_or_not_installed = [
+    package_name
+    for package_name, version in deps.items()
+    if package_name not in installed
+    or not semver_match(installed[package_name], version)
+    or True
+]
+
+for package_name in outdated_or_not_installed:
+    print(f"Installing {package_name}...")
+    package_spec = (
+        f"{package_name}@{deps[package_name]}" if package_name in deps else package_name
+    )
+    result = subprocess.run(["npm", "install", "-g", package_spec])
+    result.check_returncode()
