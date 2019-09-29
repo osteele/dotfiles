@@ -14,3 +14,5 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 PROMPT_TITLE='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
 export PROMPT_COMMAND="${PROMPT_TITLE}; ${PROMPT_COMMAND}"
+
+export PATH="$HOME/.local/bin:$PATH"
