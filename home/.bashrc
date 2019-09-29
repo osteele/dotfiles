@@ -73,6 +73,22 @@ export SCM_CHECK=false
 # Load Bash It
 source $BASH_IT/bash_it.sh
 
+function nonzero_return() {
+	RETVAL=$?
+	[ $RETVAL -ne 0 ] && echo "[*]"
+}
+
+function dirname_for_prompt() {
+	[[ $PWD == $HOME ]] && echo '~' && return
+	(
+    echo "$PWD"
+    echo \~/$(realpath --relative-to="$HOME" "$PWD")
+    echo \~/code/$(realpath --relative-to="$HOME/code" "$PWD")
+  ) | awk '{ print length, $0 }' | sort -n | head -1 | cut -d" " -f2-
+}
+
+export PS1='`nonzero_return``dirname_for_prompt`\$ '
+
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 source ~/.env.shared
