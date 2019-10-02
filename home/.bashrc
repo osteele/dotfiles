@@ -95,3 +95,10 @@ source ~/.env.shared
 
 # iTerm integration breaks the prompt inside VSCode
 [[ "$TERM_PROGRAM" == vscode ]] && unset PROMPT_COMMAND
+
+#
+# Environment managers
+#
+
+hash rbenv 2> /dev/null && eval "$(rbenv init -)"
+hash direnv 2> /dev/null && eval "$(direnv hook bash)"
