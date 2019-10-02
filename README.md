@@ -2,9 +2,18 @@
 
 My dotfiles, _a la_ <http://dotfiles.github.io>.
 
+This installs files for bash, zsh, and git, and packages for Python, Node.js,
+and Homebrew.
+
+Bash uses bash-it.
+
+Both shells install direnv and iTerm 2 integration.
+
 All shell commands below are intended to be run in the dotfiles directory.
 
-## Provision a new machine
+## Recipes
+
+### Provision a new machine
 
 ```shell
 ./scripts/install
@@ -16,9 +25,9 @@ already-linked dotfiles.)
 
 Warning: This overwrites over existing dotfiles without warning or confirmation.
 
-## Update repo from machine
+### Update repo from machine
 
-### Add unlinked dotfiles
+#### Add unlinked dotfiles
 
 For each dotfile in HOME for which there's a corresponding `dotfiles/home/*`
 target, but the HOME dotfile is not a link to that symlink target, update the
@@ -29,7 +38,7 @@ dotfiles symlink target, and replace the HOME file by a link to it.
 git commit -a 'Update dotfiles'
 ```
 
-### Add a dotfile
+#### Add a dotfile
 
 ```shell
 touch home/.rcfile
@@ -39,13 +48,13 @@ git commit -a 'Update dotfiles'
 
 This also ingests and commits any other previously non-symlinked files.
 
-### List brews that aren't in the repo
+#### List brews that aren't in the repo
 
 ```shell
 brew bundle cleanup
 ```
 
-### List casks that aren't in the Brewfile
+#### List casks that aren't in the Brewfile
 
 List apps that weren't installed from a cask or from the Mac App Store.
 These are candidates for moving to `Brewfile`.
@@ -57,7 +66,7 @@ that don't have casks such as Microsoft Office.
 ./scripts/cask-candidates
 ```
 
-### List dotfiles that aren't symlinked to dotfiles/home
+#### List dotfiles that aren't symlinked to dotfiles/home
 
 ```shell
 ./scripts/dotfile-candidates
