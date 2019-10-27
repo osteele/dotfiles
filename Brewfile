@@ -3,9 +3,10 @@
 #   brew bundle cleanup
 #   brew bundle cleanup --force
 
-# tap 'caskroom/cask'
-tap 'caskroom/fonts'
 tap 'homebrew/bundle'
+# tap 'homebrew/cask'
+tap 'homebrew/cask-fonts'
+# tap 'homebrew/cask-versions'
 tap 'homebrew/core'
 tap 'homebrew/services'
 
