@@ -1,13 +1,13 @@
-#
 # Executes commands at login pre-zshrc.
+#
+# Sourced after .zshenv, before .zprofile
+# echo .zprofile
 
 #
 # Browser
 #
 
-if [[ "$OSTYPE" == darwin* ]]; then
-  export BROWSER='open'
-fi
+[[ "$OSTYPE" == darwin* ]] && export BROWSER='open'
 
 #
 # Editors
@@ -21,9 +21,7 @@ export PAGER='less'
 # Language
 #
 
-if [[ -z "$LANG" ]]; then
-  export LANG='en_US.UTF-8'
-fi
+[[ -z "$LANG" ]] && export LANG='en_US.UTF-8'
 
 #
 # Paths
@@ -70,22 +68,6 @@ fi
 TMPPREFIX="${TMPDIR%/}/zsh"
 
 # PATH
-
-# from direnv stdlib
-has() {
-  type "$1" &>/dev/null
-}
-
-PATH_add() {
-  PATH=$1:$PATH
-  export PATH
-}
-
-PATH_add /usr/local/bin
-PATH_add /usr/local/opt/coreutils/libexec/gnubin
-PATH_add /usr/local/opt/ccache/libexec
-[[ -v DOTFILES ]] && PATH_add "${DOTFILES}/bin"
-PATH_add ~/bin
 
 # Go
 # PATH_add /usr/local/opt/go/libexec/bin

@@ -1,4 +1,9 @@
+# Read when interactive
+# Sourced after.zshenv and .zprofile
+# echo .zshrc
+
 # Paths
+
 [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]] && source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 
 export EDITOR=code
