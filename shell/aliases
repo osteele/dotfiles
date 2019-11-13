@@ -18,6 +18,9 @@ if type exa > /dev/null; then
   alias lt='\exa --tree'
 fi
 
+type bat > /dev/null && alias cat=bat
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
 # fasd
 # alias a='fasd -a'        # any
 # alias s='fasd -si'       # show / search / select

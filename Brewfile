@@ -28,6 +28,7 @@ brew 'tmux'
 
 # CLI
 brew 'awscli'
+brew 'bat'
 brew 'cloc'
 brew 'exa'
 brew 'ffmpeg'
