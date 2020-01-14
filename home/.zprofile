@@ -1,4 +1,5 @@
 # Executes commands at login pre-zshrc.
+
 #
 # Sourced after .zshenv, before .zprofile
 # echo .zprofile
@@ -40,6 +41,8 @@ path=(
   /usr/local/{bin,sbin}
   $path
 )
+
+PATH_add /usr/local/opt/ccache/libexec
 
 #
 # Less

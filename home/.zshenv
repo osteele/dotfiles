@@ -19,15 +19,12 @@ has() {
   type "$1" &>/dev/null
 }
 
-# TODO: remove
-PATH_add /usr/local/opt/coreutils/libexec/gnubin/
+PATH_add /usr/local/opt/coreutils/libexec/gnubin
 if [[ -L ~/.zshenv ]]; then
   DOTFILES=$(dirname "$(readlink -nf ~/.zshenv)")/..
 fi
 
 PATH_add /usr/local/bin
-PATH_add /usr/local/opt/coreutils/libexec/gnubin
-PATH_add /usr/local/opt/ccache/libexec
 [[ -v DOTFILES ]] && PATH_add "${DOTFILES}/bin"
 PATH_add ~/bin
 
