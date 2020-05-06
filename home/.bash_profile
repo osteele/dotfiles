@@ -1,3 +1,5 @@
+# shellcheck shell=bash source=/dev/null
+
 . ~/.profile
 . ~/.bashrc
 
@@ -12,8 +14,9 @@ done
 
 # pro cd function
 pd() {
-  local projDir=$(pro search $1)
-  cd ${projDir}
+  local projDir
+  projDir=$(pro search "$1")
+  cd "${projDir}" || return $?
 }
 
 # __loopback-oracle-installer__:  Tue Dec 10 07:54:18 EST 2013

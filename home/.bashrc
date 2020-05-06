@@ -1,23 +1,23 @@
+# shellcheck shell=bash source=/dev/null
+
 # Node
 export NVM_DIR=~/.nvm
 
 # added by travis gem
 # [ -f /Users/osteele/.travis/travis.sh ] && source /Users/osteele/.travis/travis.sh
 
-
 export PATH=/usr/local/bin:$PATH # brew
 export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
-export PATH=/usr/local/opt/go/libexec/bin:$PATH # Go
-export PATH=~/anaconda3/bin:$PATH # conda
-export PATH=/usr/local/opt/ccache/libexec:$PATH # ccache
-hash yarn 2> /dev/null && export PATH=$(yarn global bin):$PATH # yarn
-export PATH="$HOME/.rbenv/bin:$PATH" # rbenv
+export PATH=/usr/local/opt/go/libexec/bin:$PATH               # Go
+export PATH=/usr/local/opt/ccache/libexec:$PATH               # ccache
+hash yarn 2>/dev/null && export PATH=$(yarn global bin):$PATH # yarn
+export PATH="$HOME/.rbenv/bin:$PATH"                          # rbenv
 export PATH=~/bin:$PATH
 
 # autoenv
-hash brew 2> /dev/null && [ -f $(brew --prefix autoenv)/activate.sh ] && source $(brew --prefix autoenv)/activate.sh
+hash brew 2>/dev/null && [ -f "$(brew --prefix autoenv)"/activate.sh ] && source" $(brew --prefix autoenv)"/activate.sh
 # [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
-eval $(thefuck --alias)
+eval "$(thefuck --alias)"
 
 if [[ -L ~/.bashrc ]]; then
   DOTFILES=$(dirname "$(readlink -nf ~/.bashrc)")/..
@@ -74,16 +74,16 @@ export SCM_CHECK=false
 source $BASH_IT/bash_it.sh
 
 function nonzero_return() {
-	RETVAL=$?
-	[ $RETVAL -ne 0 ] && echo "[*]"
+  RETVAL=$?
+  [ $RETVAL -ne 0 ] && echo "[*]"
 }
 
 function dirname_for_prompt() {
-	[[ $PWD == $HOME ]] && echo '~' && return
-	(
+  [[ $PWD == "$HOME" ]] && echo '~' && return
+  (
     echo "$PWD"
-    echo \~/$(realpath --relative-to="$HOME" "$PWD")
-    echo \~/code/$(realpath --relative-to="$HOME/code" "$PWD")
+    echo \~/"$(realpath --relative-to="$HOME" "$PWD")"
+    echo \~/code/"$(realpath --relative-to="$HOME/code" "$PWD")"
   ) | awk '{ print length, $0 }' | sort -n | head -1 | cut -d" " -f2-
 }
 
@@ -100,5 +100,5 @@ source ~/.env.shared
 # Environment managers
 #
 
-hash rbenv 2> /dev/null && eval "$(rbenv init -)"
-hash direnv 2> /dev/null && eval "$(direnv hook bash)"
+hash rbenv 2>/dev/null && eval "$(rbenv init -)"
+hash direnv 2>/dev/null && eval "$(direnv hook bash)"

@@ -1,3 +1,5 @@
+# shellcheck shell=bash source=/dev/null
+
 export NODE_PATH=/usr/local/lib/node_modules
 
 # if test -f ~/.gnupg/.gpg-agent-info -a -n "$(pgrep gpg-agent)"; then
@@ -16,3 +18,4 @@ PROMPT_TITLE='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
 export PROMPT_COMMAND="${PROMPT_TITLE}; ${PROMPT_COMMAND}"
 
 export PATH="$HOME/.local/bin:$PATH"
+export PATH=$PATH:~/.platformio/penv/bin

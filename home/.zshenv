@@ -5,6 +5,8 @@
 # Sourced before .zprofile and .zshrc
 # echo .zshenv
 
+# shellcheck source=/dev/null
+
 #
 # PATH
 #
@@ -28,7 +30,7 @@ PATH_add /usr/local/bin
 [[ -v DOTFILES ]] && PATH_add "${DOTFILES}/bin"
 PATH_add ~/bin
 
-has brew && [[ -f $(brew --prefix nvm)/nvm.sh ]] && source $(brew --prefix nvm)/nvm.sh
+has brew && [[ -f $(brew --prefix nvm)/nvm.sh ]] && source "$(brew --prefix nvm)"/nvm.sh
 
 MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
 MANPATH=/usr/local/share/man:$MANPATH
@@ -39,8 +41,8 @@ MANPATH=/usr/local/share/man:$MANPATH
 [[ -f ~/.secrets ]] && source ~/.secrets
 
 # Python
-PATH_add $HOME/.poetry/bin
-has pyenv && PATH_add $HOME/.pyenv/bin
+PATH_add "${HOME}/.poetry/bin"
+has pyenv && PATH_add "${HOME}/.pyenv/bin"
 has pyenv && eval "$(pyenv init -)"
 
 test -e "${HOME}/.env.shared" && source "${HOME}/.env.shared"
