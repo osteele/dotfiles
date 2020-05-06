@@ -129,3 +129,5 @@ export GPG_TTY=$(tty)
 [[ -f /Users/osteele/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/osteele/
 
 export PATH=/Users/osteele/.local/bin:$PATH
+
+eval "$(starship init zsh)"
