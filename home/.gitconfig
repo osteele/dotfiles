@@ -5,7 +5,7 @@
 
 [github]
 	user = osteele
- 
+
 [alias]
 	ci = commit -a
 	co = checkout
@@ -34,6 +34,11 @@
 	# own
 	prune-origin = remote prune origin
 	prune-merged = !bash -c \"git branch --merged dev | egrep -v '\\s(master|dev)$' | xargs git branch -d\"
+
+	# rebase
+	rbo = rebase -i
+	vsrbi = !GIT_SEQUENCE_EDITOR='code --wait' git rebase -i
+	vsrbo = !GIT_SEQUENCE_EDITOR='code --wait' git rebase -i origin/master
 
 	# logs
 	find-commits = log --oneline -F --grep
