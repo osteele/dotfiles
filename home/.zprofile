@@ -43,6 +43,7 @@ path=(
 )
 
 PATH_add /usr/local/opt/ccache/libexec
+PATH_add /usr/local/opt/gnu-sed/libexec/gnubin
 
 #
 # Less
@@ -103,3 +104,5 @@ PATH_add ~/.cargo/bin
 
 # Travis
 [[ -f ~/.travis/travis.sh ]] && source ~/.travis/travis.sh
+
+export PATH=$PATH:~/.platformio/penv/bin
