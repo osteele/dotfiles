@@ -4,6 +4,8 @@
 # Sourced after .zshenv, before .zprofile
 # echo .zprofile
 
+echo "$(date +%T): .zprofile" >> $zsh_profile_log
+
 #
 # Browser
 #
@@ -106,3 +108,5 @@ PATH_add ~/.cargo/bin
 [[ -f ~/.travis/travis.sh ]] && source ~/.travis/travis.sh
 
 export PATH=$PATH:~/.platformio/penv/bin
+
+echo "$(date +%T): .zprofile end" >> $zsh_profile_log

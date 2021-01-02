@@ -4,6 +4,8 @@
 
 # Paths
 
+echo "$(date +%T): .zshrc" >> $zsh_profile_log
+
 [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]] && source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 
 export EDITOR=code
@@ -146,3 +148,5 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+echo "$(date +%T): .zshrc end" >> $zsh_profile_log

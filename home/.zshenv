@@ -3,9 +3,13 @@
 # `.zshenv' should not contain commands that produce output or assume the shell is attached to a tty.
 #
 # Sourced before .zprofile and .zshrc
-# echo .zshenv
 
 # shellcheck source=/dev/null
+
+mkdir -p .logs
+zsh_profile_log=.logs/zsh-profile.log
+touch $zsh_profile_log
+echo "$(date +%T): .zshenv" >> $zsh_profile_log
 
 [[ -e "${HOME}/.env.shared" ]] && source "${HOME}/.env.shared"
 
@@ -32,7 +36,9 @@ PATH_add /usr/local/bin
 [[ -v DOTFILES ]] && PATH_add "${DOTFILES}/bin"
 PATH_add ~/bin
 
+echo "$(date +%T): nvm.sh" >> $zsh_profile_log
 has brew && [[ -f $(brew --prefix nvm)/nvm.sh ]] && source "$(brew --prefix nvm)"/nvm.sh
+echo "$(date +%T): nvm.sh end" >> $zsh_profile_log
 
 # For use with `brew install curl-ca-bundle`
 # export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
@@ -44,4 +50,4 @@ PATH_add "${HOME}/.poetry/bin"
 has pyenv && PATH_add "${HOME}/.pyenv/bin"
 has pyenv && eval "$(pyenv init -)"
 
-# echo .zshenv end
+echo "$(date +%T): .zshenv end" >> $zsh_profile_log
