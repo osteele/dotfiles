@@ -1,5 +1,7 @@
 # shellcheck shell=bash source=/dev/null
 
+source ~/.env.shared
+
 # Node
 export NVM_DIR=~/.nvm
 
@@ -90,8 +92,6 @@ function dirname_for_prompt() {
 export PS1='`nonzero_return``dirname_for_prompt`\$ '
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-source ~/.env.shared
 
 # iTerm integration breaks the prompt inside VSCode
 [[ "$TERM_PROGRAM" == vscode ]] && unset PROMPT_COMMAND
