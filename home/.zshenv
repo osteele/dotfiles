@@ -43,6 +43,5 @@ has brew && [[ -f $(brew --prefix nvm)/nvm.sh ]] && source "$(brew --prefix nvm)
 PATH_add "${HOME}/.poetry/bin"
 has pyenv && PATH_add "${HOME}/.pyenv/bin"
 has pyenv && eval "$(pyenv init -)"
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # echo .zshenv end
