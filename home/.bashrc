@@ -19,7 +19,6 @@ export PATH=/usr/local/opt/go/libexec/bin:$PATH               # Go
 export PATH=/usr/local/opt/ccache/libexec:$PATH               # ccache
 hash yarn 2>/dev/null && export PATH=$(yarn global bin):$PATH # yarn
 export PATH="$HOME/.rbenv/bin:$PATH"                          # rbenv
-export PATH=~/bin:$PATH
 
 # autoenv
 hash brew 2>/dev/null && [ -f "$(brew --prefix autoenv)"/activate.sh ] && source" $(brew --prefix autoenv)"/activate.sh
@@ -27,9 +26,13 @@ hash brew 2>/dev/null && [ -f "$(brew --prefix autoenv)"/activate.sh ] && source
 eval "$(thefuck --alias)"
 
 if [[ -L ~/.bashrc ]]; then
-  DOTFILES=$(dirname "$(readlink -nf ~/.bashrc)")/..
+  # DOTFILES=$(dirname "$(readlink -nf ~/.bashrc)")/..
+  DOTFILES=$(dirname $(dirname "$(readlink -nf ~/.bashrc)"))
   . "${DOTFILES}/shell/aliases"
+  export PATH="${DOTFILES}/bin":$PATH
 fi
+
+export PATH=~/bin:$PATH
 
 export EDITOR=code
 

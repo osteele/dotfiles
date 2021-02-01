@@ -1,0 +1,11 @@
+#!/usr/bin/env bash -eu
+
+# Like `brew cask`, except:
+# 1. Shorter
+# 2. Doesn't require that I remember which of `search` and `install` is `brew` vs. `brew cask`
+
+if [[ $1 == search ]]; then
+    brew "$@"
+else
+    brew cask "$@"
+fi
