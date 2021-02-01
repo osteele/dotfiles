@@ -1,5 +1,10 @@
 # shellcheck shell=bash source=/dev/null
 
+mkdir -p ~/.logs
+bash_profile_log=~/.logs/bash-profile.log
+touch $bash_profile_log
+echo "$(date +%T): .bashrc" >> $bash_profile_log
+
 source ~/.env.shared
 
 # Node
@@ -102,3 +107,5 @@ export PS1='`nonzero_return``dirname_for_prompt`\$ '
 
 hash rbenv 2>/dev/null && eval "$(rbenv init -)"
 hash direnv 2>/dev/null && eval "$(direnv hook bash)"
+
+echo "$(date +%T): .bashrc end" >> $bash_profile_log

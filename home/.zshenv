@@ -6,8 +6,8 @@
 
 # shellcheck source=/dev/null
 
-mkdir -p .logs
-zsh_profile_log=.logs/zsh-profile.log
+mkdir -p ~/.logs
+zsh_profile_log=~/.logs/zsh-profile.log
 touch $zsh_profile_log
 echo "$(date +%T): .zshenv" >> $zsh_profile_log
 
