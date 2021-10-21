@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Source: https://cutecoder.org/software/detecting-apple-silicon-shell-script/
+
+arch_name="$(uname -m)"
+
+if [ "${arch_name}" = "x86_64" ]; then
+    if [ "$(sysctl -in sysctl.proc_translated)" = "1" ]; then
+        echo "arm64"
+        exit
+    fi
+fi
+
+echo "$arch_name"
