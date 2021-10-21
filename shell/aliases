@@ -80,3 +80,17 @@ function dm.a {
     echo "Set active host to $1"
   fi
 }
+
+# Teaching
+# mkdir -p ~/.vscode-teaching
+# mkdir -p ~/.vscode-teaching/vscode-prefs
+# alias tcode='code --user-data-dir ~/.vscode-teaching/vscode-prefs --extensions-dir ~/.vscode-teaching/vscode-extensions'
+function codi() {
+  local dir=~/.vscode-teaching
+  if [[ ! -d $dir ]]; then
+    echo "Creating $dir"
+    mkdir -p "$dir"
+  fi
+  code --extensions-dir "$dir/extensions" --user-data-dir "$dir/data"
+}
+
