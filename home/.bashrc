@@ -112,3 +112,6 @@ hash rbenv 2>/dev/null && eval "$(rbenv init -)"
 hash direnv 2>/dev/null && eval "$(direnv hook bash)"
 
 echo "$(date +%T): .bashrc end" >> $bash_profile_log
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

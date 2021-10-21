@@ -19,3 +19,6 @@ export PROMPT_COMMAND="${PROMPT_TITLE}; ${PROMPT_COMMAND}"
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH=$PATH:~/.platformio/penv/bin
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

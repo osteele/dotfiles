@@ -22,8 +22,10 @@ pd() {
 # __loopback-oracle-installer__:  Tue Dec 10 07:54:18 EST 2013
 # export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:/usr/local/lib/node_modules/loopback-connector-oracle/node_modules/instantclient"
 
-# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 #if [ -e /Users/osteele/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/osteele/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+. /usr/local/opt/asdf/asdf.sh
