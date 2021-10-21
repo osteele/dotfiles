@@ -27,6 +27,8 @@ has() {
   type "$1" &>/dev/null
 }
 
+[[ -x /opt/homebrew/bin/greadlink ]] && alias readlink=/opt/homebrew/bin/greadlink
+
 PATH_add /usr/local/opt/coreutils/libexec/gnubin
 DOTFILES=.
 if [[ -L ~/.zshenv ]]; then
