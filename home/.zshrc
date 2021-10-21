@@ -6,18 +6,30 @@
 
 echo "$(date +%T): .zshrc" >> $zsh_profile_log
 
+# Paths
+
 [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]] && source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+
+export PATH=/Users/osteele/.local/bin:$PATH
+
+[[ -d "/opt/homebrew/bin" ]] && export PATH="/opt/homebrew/bin:$PATH"
+
+if [[ $(sysctl hw.optional.arm64 2> /dev/null) =~ ": 1" ]]; then
+  alias brew='arch -arm64 brew'
+  alias ibrew='arch --x86_64 /usr/local/bin/brew'
+fi
 
 export EDITOR=code
 export LESSOPEN="| $(which highlight) %s --out-format xterm256 --line-numbers --quiet --force --style zenburn"
 
-AUTO_CD=true
-CDPATH=~/code:~/sites
 
 
 #
 # Zsh options
 #
+
+AUTO_CD=true
+CDPATH=~/code:~/sites
 
 setopt AUTO_CD # `dir` instead of `cd dir`
 setopt AUTO_NAME_DIRS # show named variables in path
