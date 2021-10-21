@@ -1,7 +1,7 @@
 [user]
 	name = Oliver Steele
 	email = steele@osteele.com
-	accesstoken = $secret(accesstoken)
+	accesstoken = $secret(GITHUB_ACCESS_TOKEN)
 
 [github]
 	user = osteele
