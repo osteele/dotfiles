@@ -4,8 +4,18 @@
 # 1. Shorter
 # 2. Doesn't require that I remember which of `search` and `install` is `brew` vs. `brew cask`
 
-if [[ $1 == search ]]; then
-    brew "$@"
-else
-    brew cask "$@"
-fi
+case $1 in
+  install)
+    shift
+    brew install --cask "$@"
+    ;;
+  search)
+    shift
+    brew search --cask "$@"
+    ;;
+  *)
+    subcommand=$1
+    shift
+    brew $subcommand --cask "$@"
+    ;;
+esac
