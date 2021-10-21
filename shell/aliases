@@ -94,3 +94,39 @@ function codi() {
   code --extensions-dir "$dir/extensions" --user-data-dir "$dir/data"
 }
 
+# run whichever of npm or yarn is managing the current directory
+alias n=npm/yarn
+alias y=npm/yarn
+function npm/yarn() {
+  local runner
+  local package_dir=$(pwd)
+
+  while true; do
+    if [[ -f "$package_dir/package.json" ]]; then
+      if [[ -f "$package_dir/package-lock.json" ]]; then
+        runner="npm"
+        break
+      fi
+      if [[ -f "$package_dir/yarn.lock" ]]; then
+        runner="yarn"
+        break
+      fi
+      runner="npm"
+    fi
+    package_dir=$(package_dirname "$package_dir")
+    if [[ "$dir" == "/" ]]; then
+      if [[ -z "$runner" ]]; then
+        echo "Error: package.json not found in current working directory or parents" 1>&2
+        return 1
+      else
+        echo "Warning: package-lock.json or yarn.lock not found; assuming $runner" 1>&2
+      fi
+    fi
+  done
+
+  $runner $@
+}
+
+function nr() {
+  npm run $@ --
+}
