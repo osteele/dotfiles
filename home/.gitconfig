@@ -13,6 +13,11 @@
 	amend = commit -a -C HEAD --amend
 	rev = checkout HEAD
 	p4-ci = !git-p4 rebase ; git-p4 submit --reset
+	# from https://twitter.com/rakyll/status/1413301016561217538
+	stomp = git reset - -hard @{upstream} # reset local to tracked remote
+	uncommit = reset --soft HEAD~1
+	undo = reset --mixed HEAD~1
+	unhapen = reset --hard HEAD~1
 	# from nuclear squid
 	ignored = ls-files --exclude-standard --ignored --others
 	# from http://www.saintsjd.com/2012/01/a-better-ui-for-git/
@@ -21,6 +26,8 @@
 	switch = !legit switch \"$@\"
 	ribbon = tag --force _ribbon origin/master
 	catchup = log --pretty=oneline --abbrev-commit --decorate --reverse --topo-order _ribbon..origin/master
+	# from https://gist.github.com/carolynvs/c9357f45b6230cc8c3b302e83e3961a0
+	wip = for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads
 
 	# legit
 	branches = !legit branches
@@ -185,3 +192,5 @@
 	autoDetach = false
 [rerere]
 	enabled = true
+[init]
+	defaultBranch = main
