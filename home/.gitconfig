@@ -62,6 +62,8 @@
 
 [credential]
 	helper = osxkeychain
+	helper =
+	helper = /usr/local/share/gcm-core/git-credential-manager-core
 
 [core]
 	excludesfile = /Users/osteele/.gitignore
@@ -81,8 +83,8 @@
 	tool = kaleidoscope
 	compactionHeuristic = true
 
-[gpg]
-	program = /usr/local/bin/krgpg
+# [gpg]
+# 	program = /usr/local/bin/krgpg
 
 [help]
 	format = web
@@ -192,6 +194,8 @@
 	autoDetach = false
 [rerere]
 	enabled = true
+[credential "https://dev.azure.com"]
+	useHttpPath = true
 [init]
 	defaultBranch = main
 [difftool "kaleidoscope"]
