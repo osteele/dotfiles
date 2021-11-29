@@ -78,7 +78,7 @@
 	color = auto
 	rename = copy
 	renames = true
-	tool = Kaleidoscope
+	tool = kaleidoscope
 	compactionHeuristic = true
 
 [gpg]
@@ -97,7 +97,7 @@
 
 [merge]
 	log = true
-	tool = Kaleidoscope
+	tool = kaleidoscope
 	conflictstyle = diff3
 	# tool = opendiff
 
@@ -194,3 +194,8 @@
 	enabled = true
 [init]
 	defaultBranch = main
+[difftool "kaleidoscope"]
+	cmd = /usr/local/bin/ksdiff --diff \"$LOCAL\" \"$REMOTE\"
+[mergetool "kaleidoscope"]
+	trustExitCode = true
+	cmd = /usr/local/bin/ksdiff --merge \"$LOCAL\" \"$REMOTE\" --base \"$BASE\" --output \"$MERGED\"

@@ -1,8 +1,5 @@
 # Read when interactive
 # Sourced after.zshenv and .zprofile
-# echo .zshrc
-
-# Paths
 
 echo "$(date +%T): .zshrc" >> $zsh_profile_log
 
@@ -136,26 +133,24 @@ export GPG_TTY=$(tty)
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /Users/osteele/sites/cloudfront-auth/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/osteele/sites/cloudfront-auth/node_modules/tabtab/.completions/serverless.zsh
+[[ -f ~/sites/cloudfront-auth/node_modules/tabtab/.completions/serverless.zsh ]] && . ~/sites/cloudfront-auth/node_modules/tabtab/.completions/serverless.zsh
 
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /Users/osteele/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/osteele/
-
-export PATH=/Users/osteele/.local/bin:$PATH
+[[ -f ~/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh ]] && . ~/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh
 
 eval "$(starship init zsh)"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/local/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/usr/local/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/usr/local/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+        . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
     else
-        export PATH="/usr/local/anaconda3/bin:$PATH"
+        export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -168,3 +163,30 @@ echo "$(date +%T): .zshrc end" >> $zsh_profile_log
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+
+export SSH_AUTH_SOCK=/Users/osteele/Library/Containers/org.hejki.osx.sshce.agent/Data/socket.ssh
+
+if [ $ITERM_SESSION_ID ]; then
+precmd() {
+  echo -ne "\033]0;${PWD##*/}\007"
+  # echo -ne "\033]0;$(dirs)\007"
+}
+fi
+
+# DISABLE_AUTO_TITLE="true"
+
+# iterm_tab_title() {
+#   echo -ne "\e]0;${PWD##*/}\a"
+# }
+# add-zsh-hook precmd iterm_tab_title
+
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[[ -f /Users/osteele/code/openconnect-service/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /Users/osteele/code/openconnect-service/node_modules/tabtab/.completions/electron-forge.zsh
+
+# Bun
+export BUN_INSTALL="/Users/osteele/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Bun completions
+[ -s "/Users/osteele/.bun/_bun" ] && source "/Users/osteele/.bun/_bun"
