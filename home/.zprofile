@@ -16,9 +16,9 @@ echo "$(date +%T): .zprofile" >> $zsh_profile_log
 # Editors
 #
 
-export EDITOR='nano'
-export VISUAL='nano'
-export PAGER='less'
+# export EDITOR='nano'
+# export VISUAL='nano'
+# export PAGER='less'
 
 #
 # Language
@@ -88,8 +88,8 @@ PATH_add $HOME/src/go/bin:$HOME/go/bin
 PATH_add ~/.cabal/bin
 
 # Node
-PATH_add /usr/local/share/npm/bin
-has yarn && PATH_add $(yarn global bin)
+# PATH_add /usr/local/share/npm/bin
+# has yarn && PATH_add $(yarn global bin)
 
 # Python
 # added by Anaconda 2.0.1 installer
@@ -105,7 +105,7 @@ PATH_add ~/.rbenv/bin
 PATH_add ~/.cargo/bin
 
 # Travis
-[[ -f ~/.travis/travis.sh ]] && source ~/.travis/travis.sh
+# [[ -f ~/.travis/travis.sh ]] && source ~/.travis/travis.sh
 
 export PATH=$PATH:~/.platformio/penv/bin
 

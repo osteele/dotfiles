@@ -33,7 +33,6 @@ zstyle ':prezto:load' pmodule \
   'fasd' `#must be loaded after the completion module` \
   'git' \
   'history' \
-  'homebrew' \
   'ruby' \
   'osx' \
   'ssh' \
@@ -45,6 +44,9 @@ zstyle ':prezto:load' pmodule \
   'history-substring-search' `#must follow syntax-highlighting` \
   'autosuggestions' `#must follow syntax-highlighting and history-substring-search` \
   'prompt' # must come last
+
+# was after 'history' \
+#  'homebrew' \
 
 #
 # Editor
