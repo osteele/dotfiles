@@ -38,11 +38,6 @@ PATH_add /usr/local/bin
 [[ -v DOTFILES ]] && PATH_add "${DOTFILES}/bin"
 PATH_add ~/bin
 
-# nvm adds 2-3 seconds
-# echo "$(date +%T): nvm.sh" >> $zsh_profile_log
-# has brew && [[ -f $(brew --prefix nvm)/nvm.sh ]] && source "$(brew --prefix nvm)"/nvm.sh
-# echo "$(date +%T): nvm.sh end" >> $zsh_profile_log
-
 # For use with `brew install curl-ca-bundle`
 # export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
 

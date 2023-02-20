@@ -158,8 +158,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-[[ -f /usr/local/opt/asdf/asdf.sh ]] && . /usr/local/opt/asdf/asdf.sh
-
 echo "$(date +%T): .zshrc end" >> $zsh_profile_log
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.

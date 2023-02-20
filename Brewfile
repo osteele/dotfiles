@@ -54,7 +54,6 @@ brew 'wget'
 # language support
 brew 'go'
 brew 'node'
-brew 'nvm'
 brew 'pipenv'
 brew 'pipx'
 brew 'pyenv'

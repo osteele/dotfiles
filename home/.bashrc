@@ -10,10 +10,6 @@ echo "$(date +%T): .bashrc" >> $bash_profile_log
 source ~/.env.shared
 
 # Node
-export NVM_DIR=~/.nvm
-
-# added by travis gem
-# [ -f /Users/osteele/.travis/travis.sh ] && source /Users/osteele/.travis/travis.sh
 
 export PATH=/usr/local/bin:$PATH # brew
 export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
