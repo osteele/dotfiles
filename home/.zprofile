@@ -1,3 +1,5 @@
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zprofile.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zprofile.pre.zsh"
 # Executes commands at login pre-zshrc.
 
 #
@@ -110,3 +112,6 @@ PATH_add ~/.cargo/bin
 export PATH=$PATH:~/.platformio/penv/bin
 
 echo "$(date +%T): .zprofile end" >> $zsh_profile_log
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zprofile.post.zsh" ]] && builtin source "$HOME/.fig/shell/zprofile.post.zsh"

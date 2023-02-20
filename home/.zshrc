@@ -1,3 +1,5 @@
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 # Read when interactive
 # Sourced after.zshenv and .zprofile
 
@@ -190,3 +192,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Bun completions
 [ -s "/Users/osteele/.bun/_bun" ] && source "/Users/osteele/.bun/_bun"
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
